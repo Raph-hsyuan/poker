@@ -1,5 +1,0 @@
-@author HUANG Shenyuan
-@version 2017.12.29
-
-javac -d build/classes -cp build/classes src/cards/basic/*.java
-java -cp build/classes cards.basic.Main
