@@ -1,3 +1,6 @@
+HUANG Shenyuan
+
+
 Configure Git for the first time
 
 git config --global user.name "Shenyuan Huang"

@@ -1,0 +1,68 @@
+Travail pour ce weekend :
+
+We are going to develop a simple prototype of Poker :
+
+1-< enum  Suit > 
+
+	Just have one colors:  WHITE
+	@variable String name : the name of color
+	@Override toString() : return the name of color
+
+
+-----------------------------------------------------------------------------------------------
+
+2-< enum  Rank >
+
+	Just have five number: TWO, THREE, FOUR, FIVE, SIX
+	@variable String name : the name of number "2","3".....
+	@Override toString() : return the name of number
+	@method int compare(Rank rank) : return the value returned by method compareTo(rank)
+					 >0 : bigger
+					 =0 : equal
+					 <0 : smaller
+
+		
+-----------------------------------------------------------------------------------------------
+
+3-< class Card >
+
+	@variable Suit suit
+	@variable Rank rank
+	@constructor recieve Suit and Rank
+	@method int compare(Card card) by calling Rank.compare : return the value returned by method compareTo(rank)
+								 >0 : bigger
+								 =0 : equal
+								 <0 : smaller
+	@Override toString() : return the name of card like " 2 of white "
+
+------------------------------------------------------------------------------------------------
+
+4-< class Player >
+
+	@variable String name : the name of player
+	@variable ArrayList<Card> handCard : to save the card of a player
+	@variable int score : to save the score get
+	@constructor recieve a String name
+	@method Card drawCard() : draw a card
+	@method void shuffle() : to shuffle the card
+	@method void addScore() £º to add score
+	@method int getScore() : to get the score
+	@Override toString : return the name of player
+
+------------------------------------------------------------------------------------------------
+
+5-< class Game >
+
+	@variable ArrayList<Player> players : to save all the player
+		......
+	@constructor receive the names of player and creates new players
+`	@method void roundStart()
+	@method void gameStart()	
+	@method void judgeHand()
+	@method void judgeResult()
+	@method printWinner()
+		......
+	
+
+================================================================================================
+================================================================================================
