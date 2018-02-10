@@ -1,5 +1,7 @@
 Travail pour ce weekend :
-
+WU Kejia :1,2,3
+LIU Jiaqi : 4
+HUANG Shenyuan : 5
 We are going to develop a simple prototype of Poker :
 
 1-< enum  Suit > 
