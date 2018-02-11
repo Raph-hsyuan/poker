@@ -1,7 +1,7 @@
 Travail pour ce weekend :
 WU Kejia :1,2,3
-LIU Jiaqi : 4
-HUANG Shenyuan : 5
+LIU Jiaqi : 4£¬5
+HUANG Shenyuan : 6£¬7
 We are going to develop a simple prototype of Poker :
 
 1-< enum  Suit > 
@@ -39,32 +39,45 @@ We are going to develop a simple prototype of Poker :
 
 ------------------------------------------------------------------------------------------------
 
-4-< class Player >
+4-< class Deck >
+	@variable ArrayList<Card> deck : every deck has 5 cards
+	@constructor initialize a deck of all five cards
+	@method void shuffle() : to shuffle the card
+	@method Card drawCard() : draw a card
+
+------------------------------------------------------------------------------------------------
+
+5-< class Player >
 
 	@variable String name : the name of player
-	@variable ArrayList<Card> handCard : to save the card of a player
+	@variable Deck deck : everyone has a deck
 	@variable int score : to save the score get
-	@constructor recieve a String name
-	@method Card drawCard() : draw a card
-	@method void shuffle() : to shuffle the card
+	@constructor recieve a String name initialize his deck and shuffle it
+	@method Card drawCard() : use deck.drawCard() to draw a card
 	@method void addScore() £º to add score
 	@method int getScore() : to get the score
 	@Override toString : return the name of player
 
 ------------------------------------------------------------------------------------------------
 
-5-< class Game >
+6-< class Game >
 
-	@variable ArrayList<Player> players : to save all the player
+	@variable Map<Player,Card> players : to save all the player with their hand card
+	
+	@variable Judge judge
 		......
 	@constructor receive the names of player and creates new players
 `	@method void roundStart()
 	@method void gameStart()	
-	@method void judgeHand()
-	@method void judgeResult()
 	@method printWinner()
 		......
 	
+------------------------------------------------------------------------------------------------
 
+7-< class Judge >
+		....
+	@method Player judgeHand(Map<Player,Card>)
+	@method Player judgeResult(Map<Player,Card>)
+		....
 ================================================================================================
 ================================================================================================
