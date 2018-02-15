@@ -1,0 +1,83 @@
+Travail pour ce weekend :
+WU Kejia :1,2,3
+LIU Jiaqi : 4£¬5
+HUANG Shenyuan : 6£¬7
+We are going to develop a simple prototype of Poker :
+
+1-< enum  Suit > 
+
+	Just have one colors:  WHITE
+	@variable String name : the name of color
+	@Override toString() : return the name of color
+
+
+-----------------------------------------------------------------------------------------------
+
+2-< enum  Rank >
+
+	Just have five number: TWO, THREE, FOUR, FIVE, SIX
+	@variable String name : the name of number "2","3".....
+	@Override toString() : return the name of number
+	@method int compare(Rank rank) : return the value returned by method compareTo(rank)
+					 >0 : bigger
+					 =0 : equal
+					 <0 : smaller
+
+		
+-----------------------------------------------------------------------------------------------
+
+3-< class Card >
+
+	@variable Suit suit
+	@variable Rank rank
+	@constructor recieve Suit and Rank
+	@method int compare(Card card) by calling Rank.compare : return the value returned by method compareTo(rank)
+								 >0 : bigger
+								 =0 : equal
+								 <0 : smaller
+	@Override toString() : return the name of card like " 2 of white "
+
+------------------------------------------------------------------------------------------------
+
+4-< class Deck >
+	@variable ArrayList<Card> deck : every deck has 5 cards
+	@constructor initialize a deck of all five cards
+	@method void shuffle() : to shuffle the card
+	@method Card drawCard() : draw a card
+
+------------------------------------------------------------------------------------------------
+
+5-< class Player >
+
+	@variable String name : the name of player
+	
+	@variable int score : to save the score get
+	@constructor recieve a String name initialize the common deck 
+	@method Card drawCard() : use deck.drawCard() to draw a card
+	@method void addScore() £º to add score
+	@method int getScore() : to get the score
+	@Override toString : return the name of player
+
+------------------------------------------------------------------------------------------------
+
+6-< class Game >
+
+	@variable Map<Player,Card> players : to save all the player with their hand card
+	@variable Deck deck : the game has a deck
+	@variable Judge judge
+		......
+	@constructor receive the names of player and creates new players
+`	@method void roundStart()
+	@method void gameStart()	
+	@method printWinner()
+		......
+	
+------------------------------------------------------------------------------------------------
+
+7-< class Judge >
+		....
+	@method Player judgeHand(Map<Player,Card>)
+	@method Player judgeResult(Map<Player,Card>)
+		....
+================================================================================================
+================================================================================================
