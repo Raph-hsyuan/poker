@@ -1,13 +1,12 @@
 package poker;
 
-
-public class Hand {
+class Hand {
 	Card card;
 
 	void drawCard(Card card) {
 		this.card = card;
 	}
-	
+
 	Card getCard() {
 		return card;
 	}

@@ -1,17 +1,18 @@
 package poker;
 
-public class Card {
+class Card {
 	private Rank rank;
 
-	public Card(Rank rank) {
+	Card(Rank rank) {
 		this.rank = rank;
 	}
 
-	public Rank getRank() {
+	Rank getRank() {
 		return this.rank;
 	}
+
 	@Override
 	public String toString() {
-		return " "+rank+" ";
+		return " " + rank + " ";
 	}
 }
