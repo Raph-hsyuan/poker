@@ -50,9 +50,9 @@ We are going to develop a simple prototype of Poker :
 5-< class Player >
 
 	@variable String name : the name of player
-	@variable Deck deck : everyone has a deck
+	
 	@variable int score : to save the score get
-	@constructor recieve a String name initialize his deck and shuffle it
+	@constructor recieve a String name initialize the common deck 
 	@method Card drawCard() : use deck.drawCard() to draw a card
 	@method void addScore() £º to add score
 	@method int getScore() : to get the score
@@ -63,7 +63,7 @@ We are going to develop a simple prototype of Poker :
 6-< class Game >
 
 	@variable Map<Player,Card> players : to save all the player with their hand card
-	
+	@variable Deck deck : the game has a deck
 	@variable Judge judge
 		......
 	@constructor receive the names of player and creates new players
