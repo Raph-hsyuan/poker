@@ -15,4 +15,8 @@ class Card {
 	public String toString() {
 		return " " + rank + " ";
 	}
+	
+	public int CompareWith(Card card) {
+		return this.rank.compareTo(card.rank);
+	}
 }
