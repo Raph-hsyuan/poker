@@ -16,7 +16,7 @@ class Card {
 		return " " + rank + " ";
 	}
 	
-	public int CompareWith(Card card) {
+	public int compareWith(Card card) {
 		return this.rank.compareTo(card.rank);
 	}
 }
