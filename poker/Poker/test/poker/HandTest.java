@@ -53,4 +53,22 @@ public class HandTest {
 		assertEquals(expected,outContent.toString());
 	}
 	
+	public void testCompareto(){
+	    List<Card> deck3 = new ArrayList<Card>();
+	    deck3.add(card2);
+        deck3.add(card3);
+	    hand.drawCard(deck3);
+	    assertEquals(5,hand.maxCard);
+	    
+	    List<Card> deck4 = new ArrayList<Card>();//encore une fois
+        deck4.add(card1);
+        deck4.add(card3);
+        hand.drawCard(deck4);
+        assertEquals(4,hand.maxCard);
+	    
+	    
+	    
+	}
+	
+	
 }
