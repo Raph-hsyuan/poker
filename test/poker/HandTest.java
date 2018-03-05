@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
+/**
+ * @author Groupe A
+ * @date 2018-2-21
+ */
 public class HandTest {
 
 	Hand hand = new Hand();
@@ -15,14 +19,10 @@ public class HandTest {
 	Card card5 = new Card(Rank.FIVE);
 	Card card4 = new Card(Rank.FOUR);
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	// @Ignore
-	// @Test
-	// public void testGetCard() {
-	// Card r2Card = new Card(Rank.TWO);
-	// hand.drawCard(r2Card);
-	// assertEquals(Rank.TWO, hand.getCard().getRank());
-	// }
 
+	/**
+	 * @author HUANG Shenyuan
+	 */
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw3() {
 		List<Card> deck3 = new ArrayList<Card>();
@@ -32,12 +32,14 @@ public class HandTest {
 		hand.drawCard(deck3);
 	}
 
+
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw1() {
 		List<Card> deck1 = new ArrayList<Card>();
 		deck1.add(card2);
 		hand.drawCard(deck1);
 	}
+
 
 	@Test
 	public void test1RightDraw() {
@@ -53,6 +55,9 @@ public class HandTest {
 		assertEquals(expected, outContent.toString());
 	}
 
+	/**
+	 * @author Wu Kejia
+	 */
 	@Test
 	public void testCompareto() {
 		List<Card> deck3 = new ArrayList<Card>();

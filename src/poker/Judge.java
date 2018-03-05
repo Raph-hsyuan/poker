@@ -1,41 +1,41 @@
 package poker;
 
 import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * @author Groupe A
+ * @date 2018-3-1
+ */
 class Judge {
-	ArrayList<Card> handCard1 = new ArrayList<Card>();
-	ArrayList<Card> handCard2 = new ArrayList<Card>();
+
 	public static final int PAIREPOINT = 100;
-	
-
-	Judge(ArrayList<Card> handCard1, ArrayList<Card> handCard2) {
-		this.handCard1=(ArrayList<Card>) handCard1.clone();
-		this.handCard2=(ArrayList<Card>) handCard2.clone();
+	int scoreHand1=0;
+	int scoreHand2=0;
+	void toJudge(ArrayList<Card> handCard1, ArrayList<Card> handCard2) {
+		scoreHand1=this.paireDetector(handCard1);
+		scoreHand2=this.paireDetector(handCard2);
 	}
-
-	int paire(ArrayList<Card> cards) {
-		ArrayList<Card> store = new ArrayList<Card>();
-		int maxpaire = 0, point =0;
-		for (Card card: cards) {
-			for (Card compare: store) {
-				if(compare.compareWith(card) == 0) {
+	/**
+	 * @param cards
+	 * @return the hand value
+	 * @author LIU Jiaqi
+	 */
+	int paireDetector(ArrayList<Card> cards) {
+		int maxpaire = 0;
+		int point = 0;
+		for (Card card : cards) {
+			int count = 0;
+			for (Card compare : cards) {
+				if (compare.compareWith(card) == 0) {
+					count++;
 					int paire = compare.getRank().getValue();
-					if (paire >= maxpaire) maxpaire = paire;
-					point = PAIREPOINT + maxpaire;
+					if (paire >= maxpaire && count>1) {
+						maxpaire = paire;
+						point = PAIREPOINT + maxpaire;
+					}
 				}
 			}
-			store.add(card);
 		}
 		return point;
-	}
-	
-	int brelan(ArrayList<Card> cards) {
-		ArrayList<Card> store = new ArrayList<Card>();
-		for (Card card: cards) {
-			
-		}
-		return 0;
 	}
 
 }

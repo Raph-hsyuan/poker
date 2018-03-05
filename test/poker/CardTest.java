@@ -3,7 +3,10 @@ package poker;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * @author Groupe A
+ * @date 2018-2-19
+ */
 class CardTest {
 
 	@Test
