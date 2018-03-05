@@ -12,4 +12,8 @@ enum Rank {
 	public String toString() {
 		return this.name;
 	}
+
+	int getValue() {
+		return this.ordinal();
+	}
 }
