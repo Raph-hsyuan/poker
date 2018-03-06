@@ -1,5 +1,9 @@
 package poker;
 
+/**
+ * @author Groupe A
+ * @date 2018-2-15
+ */
 class Card {
 	private Rank rank;
 

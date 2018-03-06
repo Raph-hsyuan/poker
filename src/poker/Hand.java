@@ -1,10 +1,14 @@
- package poker;
+package poker;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Groupe A
+ * @date 2018-3-6
+ */
 class Hand {
-	List<Card> cards = new ArrayList<Card>();
+	List<Card> cards = new ArrayList<>();
 	private final static Card MINICARD = new Card(Rank.TWO);
 	private final static int HAND_LIMIT = 3;
 	Card maxCard;
@@ -15,14 +19,14 @@ class Hand {
 		if (cards.size() != HAND_LIMIT)
 			throw new RuntimeException("The number of the cards is not valid");
 		for (int i = 0; i < HAND_LIMIT; i++) {
-			
+
 			this.cards.add(cards.get(i));
 		}
 		for (int i = 0; i < HAND_LIMIT; i++) {
-		    Card mini = MINICARD;
-		if (mini.compareWith(this.cards.get(i)) <= 0)
-			mini = this.cards.get(i); 
-		    maxCard = mini;
+			Card mini = MINICARD;
+			if (mini.compareWith(this.cards.get(i)) <= 0)
+				mini = this.cards.get(i);
+			maxCard = mini;
 		}
 	}
 

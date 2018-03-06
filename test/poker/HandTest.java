@@ -8,13 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
+/**
+ * @author Groupe A
+ * @date 2018-3-6
+ */
 public class HandTest {
 
 	Hand hand = new Hand();
 	Card card2 = new Card(Rank.TWO);
 	Card card5 = new Card(Rank.FIVE);
 	Card card4 = new Card(Rank.FOUR);
-	Card card11 = new Card(Rank.JACK);    
+	Card card11 = new Card(Rank.JACK);
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	// @Ignore
 	// @Test
@@ -25,7 +29,7 @@ public class HandTest {
 	// }
 
 	@Test(expected = java.lang.RuntimeException.class)
-	public void test1WrongDraw3() {//测试只能加三张牌
+	public void test1WrongDraw3() {
 		List<Card> deck3 = new ArrayList<Card>();
 		deck3.add(card2);
 		deck3.add(card5);
@@ -40,20 +44,20 @@ public class HandTest {
 		deck1.add(card2);
 		hand.drawCard(deck1);
 	}
-	
+
 	@Test(expected = java.lang.RuntimeException.class)
-    public void test1WrongDraw2() {
-        List<Card> deck2 = new ArrayList<Card>();
-        deck2.add(card2);
-        deck2.add(card5);
-        hand.drawCard(deck2);
-    }
+	public void test1WrongDraw2() {
+		List<Card> deck2 = new ArrayList<Card>();
+		deck2.add(card2);
+		deck2.add(card5);
+		hand.drawCard(deck2);
+	}
 
 	@Test
 	public void test1RightDraw() {
 		System.setOut(new PrintStream(outContent));
 		List<Card> deck3 = new ArrayList<Card>();
-		String expected = "HAND:  2   5   11";
+		String expected = "HAND:  2   5   J  ";
 		deck3.add(card2);
 		deck3.add(card5);
 		deck3.add(card11);
