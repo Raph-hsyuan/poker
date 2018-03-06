@@ -1,15 +1,12 @@
-package poker;
+ package poker;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * @author Groupe A
- * @date 2018-2-15
- */
+
 class Hand {
-	List<Card> cards = new ArrayList<>();
-	private static final Card MINICARD = new Card(Rank.TWO);
-	private static final int HAND_LIMIT = 2;
+	List<Card> cards = new ArrayList<Card>();
+	private final static Card MINICARD = new Card(Rank.TWO);
+	private final static int HAND_LIMIT = 3;
 	Card maxCard;
 
 	void drawCard(List<Card> cards) {
@@ -21,10 +18,12 @@ class Hand {
 			
 			this.cards.add(cards.get(i));
 		}
-		if (this.cards.get(0).compareWith(this.cards.get(1)) <= 0)
-			maxCard = this.cards.get(1);
-		else
-			maxCard = this.cards.get(0);
+		for (int i = 0; i < HAND_LIMIT; i++) {
+		    Card mini = MINICARD;
+		if (mini.compareWith(this.cards.get(i)) <= 0)
+			mini = this.cards.get(i); 
+		    maxCard = mini;
+		}
 	}
 
 	int compareto(Hand hand) {
