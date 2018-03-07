@@ -14,11 +14,7 @@ class Judge {
 		scoreHand1=this.paireDetector(handCard1);
 		scoreHand2=this.paireDetector(handCard2);
 	}
-	/**
-	 * @param cards
-	 * @return the hand value
-	 * @author LIU Jiaqi
-	 */
+
 	int paireDetector(ArrayList<Card> cards) {
 		int maxpaire = 0;
 		int point = 0;
