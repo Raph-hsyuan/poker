@@ -9,8 +9,8 @@ import java.util.List;
  */
 class Hand {
 	List<Card> cards = new ArrayList<>();
-	private final static Card MINICARD = new Card(Rank.TWO);
-	private final static int HAND_LIMIT = 3;
+	private static final Card MINICARD = new Card(Rank.TWO);
+	private static final int HAND_LIMIT = 4;
 	Card maxCard;
 
 	void drawCard(List<Card> cards) {
@@ -22,12 +22,11 @@ class Hand {
 
 			this.cards.add(cards.get(i));
 		}
-		for (int i = 0; i < HAND_LIMIT; i++) {
-			Card mini = MINICARD;
+		Card mini = MINICARD;
+		for (int i = 0; i < HAND_LIMIT; i++) 	
 			if (mini.compareWith(this.cards.get(i)) <= 0)
 				mini = this.cards.get(i);
-			maxCard = mini;
-		}
+		maxCard = mini;
 	}
 
 	int compareto(Hand hand) {

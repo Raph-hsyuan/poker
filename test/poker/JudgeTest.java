@@ -17,29 +17,45 @@ class JudgeTest {
 	Judge testJudge = new Judge();
 	Hand hand = new Hand();
 	Card card2 = new Card(Rank.TWO);
-	Card card5 = new Card(Rank.FIVE);
+	Card cardJ = new Card(Rank.JACK);
 	Card card4 = new Card(Rank.FOUR);
 	ArrayList<Card> testHand1 = new ArrayList<>();
 	ArrayList<Card> testHand2 = new ArrayList<>();
 	ArrayList<Card> testHand3 = new ArrayList<>();
 	ArrayList<Card> testHand4 = new ArrayList<>();
+	ArrayList<Card> testHand5 = new ArrayList<>();
+	ArrayList<Card> testHand6 = new ArrayList<>();
 	@BeforeEach
 	void intialHands() {
 		testHand1.add(card2);
 		testHand1.add(card2);
 		testHand1.add(card2);
+		testHand1.add(cardJ);
 		
 		testHand2.add(card2);
 		testHand2.add(card4);
-		testHand2.add(card5);
+		testHand2.add(cardJ);
+		testHand2.add(card4);
 		
-		testHand3.add(card5);
-		testHand3.add(card5);
-		testHand3.add(card5);
+		testHand3.add(cardJ);
+		testHand3.add(cardJ);
+		testHand3.add(cardJ);
+		testHand3.add(card4);
 		
-		testHand4.add(card5);
-		testHand4.add(card5);
+		testHand4.add(cardJ);
+		testHand4.add(cardJ);
 		testHand4.add(card2);
+		testHand4.add(card4);
+		
+		testHand5.add(cardJ);
+		testHand5.add(cardJ);
+		testHand5.add(card2);
+		testHand5.add(card2);
+		
+		testHand6.add(cardJ);
+		testHand6.add(cardJ);
+		testHand6.add(cardJ);
+		testHand6.add(cardJ);
 	}
 
 	@AfterEach
@@ -51,17 +67,33 @@ class JudgeTest {
 
 	@Test
 	void testPaireD() {
-		assertEquals(101, testJudge.paireDetector(testHand1));
-		assertEquals(0, testJudge.paireDetector(testHand2));
-		assertEquals(104, testJudge.paireDetector(testHand3));
+		assertEquals(1040513, testJudge.paireDetector(testHand2));
+		assertEquals(1110005, testJudge.paireDetector(testHand4));
 	}
 
 	@Test
-	void brelanPaireD() {
-		assertEquals(301, testJudge.brelanDetector(testHand1));
+	void testBrelanPaireD() {
+		assertEquals(2020512, testJudge.brelanDetector(testHand1));
 		assertEquals(0, testJudge.brelanDetector(testHand2));
-		assertEquals(304, testJudge.brelanDetector(testHand3));
+		assertEquals(2110004, testJudge.brelanDetector(testHand3));
 		assertEquals(0, testJudge.brelanDetector(testHand4));
+	}
+	
+	@Test
+	void paire2D() {
+		assertEquals(0, testJudge.paire2Detector(testHand1));
+		assertEquals(0, testJudge.paire2Detector(testHand2));
+		assertEquals(3051300, testJudge.paire2Detector(testHand5));
+	}
+	
+	@Test
+	void  testCarreD() {
+		assertEquals(0, testJudge.carreDetector(testHand1));
+		assertEquals(0, testJudge.carreDetector(testHand2));
+		assertEquals(0, testJudge.carreDetector(testHand3));
+		assertEquals(0, testJudge.carreDetector(testHand2));
+		assertEquals(0, testJudge.carreDetector(testHand5));
+		assertEquals(4110000, testJudge.carreDetector(testHand6));
 	}
 
 }
