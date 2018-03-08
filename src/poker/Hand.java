@@ -1,19 +1,18 @@
 package poker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Groupe A
  * @date 2018-3-6
  */
 class Hand {
-	List<Card> cards = new ArrayList<>();
+	ArrayList<Card> cards = new ArrayList<>();
 	private static final Card MINICARD = new Card(Rank.TWO);
-	private static final int HAND_LIMIT = 4;
+	private static final int HAND_LIMIT = 5;
 	Card maxCard;
 
-	void drawCard(List<Card> cards) {
+	void drawCard(ArrayList<Card> cards) {
 		maxCard = MINICARD;
 		this.cards.clear();
 		if (cards.size() != HAND_LIMIT)
@@ -36,7 +35,7 @@ class Hand {
 	/*
 	 * Only use for test
 	 */
-	List<Card> getCard() {
+	ArrayList<Card> getCard() {
 		return cards;
 	}
 
