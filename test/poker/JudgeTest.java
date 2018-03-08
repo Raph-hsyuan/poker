@@ -61,9 +61,9 @@ class JudgeTest {
 
 	@Test
 	void brelanPaireD() {
-		assertEquals(3020512, testJudge.brelanDetector(testHand1));
+		assertEquals(2020512, testJudge.brelanDetector(testHand1));
 		assertEquals(0, testJudge.brelanDetector(testHand2));
-		assertEquals(3110004, testJudge.brelanDetector(testHand3));
+		assertEquals(2110004, testJudge.brelanDetector(testHand3));
 		assertEquals(0, testJudge.brelanDetector(testHand4));
 	}
 

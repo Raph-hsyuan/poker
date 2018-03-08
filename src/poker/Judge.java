@@ -12,17 +12,16 @@ class Judge {
 	 * Point of different Hand Patterns
 	 */
 	public static final int PAIREPOINT = 1000000;
-	public static final int BRELANPOINT = 3000000;
-	
+	public static final int BRELANPOINT = 2000000;
+	public static final int PAIRE2POINT = 3000000;
 	/**
-	 * Base of the value of card
-	 * JJJKA: Point = BRELANPOINT+BASEVALUE*J.ordinal()+K.shortValue()+A.longValue();
+	 * Base of the value of card JJJKA: Point =
+	 * BRELANPOINT+SBASEVALUE*J.shortValue()+K.longValue()+A.longValue();
 	 */
-	public static final int BASEVALUE = 10000;
-
+	public static final int SBASEVALUE = 10000; // base for short value
+	public static final int LBASEVALUE = 10000; // base for long value
 	int scoreHand1 = 0;
 	int scoreHand2 = 0;
-
 
 	int paireDetector(ArrayList<Card> cards) {
 		int maxpaire = 0;
@@ -33,22 +32,23 @@ class Judge {
 				if (compare.compareWith(card) == 0) {
 					count++;
 					int paire = compare.shortValue();
-					if (paire >= maxpaire && count > 1) {
+					if (paire >= maxpaire && count == 2) {
 						maxpaire = paire;
-						point = PAIREPOINT + maxpaire*BASEVALUE;
+						point = PAIREPOINT + maxpaire * SBASEVALUE;
 					}
 				}
 			}
 		}
-		if(point==0)return point;
+		if (point == 0)
+			return point;
 		/**
-		 * Every point of Hand with pair will also note other cards'
-		 * longvalues, it needs to campare the rest of card by decending 
-		 * order, thats why we use binary weight.
+		 * Every point of Hand with pair will also note other cards' longvalues, it
+		 * needs to campare the rest of card by decending order, thats why we use binary
+		 * weight.
 		 */
-		for(Card find : cards) 
-			if(find.shortValue()!=maxpaire) 
-				point+=find.longValue();
+		for (Card find : cards)
+			if (find.shortValue() != maxpaire)
+				point += find.longValue();
 		return point;
 	}
 
@@ -61,17 +61,18 @@ class Judge {
 				if (compare.compareWith(card) == 0) {
 					count++;
 					int paire = compare.shortValue();
-					if (count > 2) {
+					if (count == 3) {
 						brelan = paire;
-						point = BRELANPOINT + brelan*BASEVALUE;
+						point = BRELANPOINT + brelan * SBASEVALUE;
 					}
 				}
 			}
 		}
-		if(point==0)return point;
-		for(Card find : cards) 
-			if(find.shortValue()!=brelan) 
-				point+=find.longValue();
+		if (point == 0)
+			return point;
+		for (Card find : cards)
+			if (find.shortValue() != brelan)
+				point += find.longValue();
 		return point;
 	}
 
