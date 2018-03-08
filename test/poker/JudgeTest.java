@@ -24,6 +24,7 @@ class JudgeTest {
 	ArrayList<Card> testHand3 = new ArrayList<>();
 	ArrayList<Card> testHand4 = new ArrayList<>();
 	ArrayList<Card> testHand5 = new ArrayList<>();
+	ArrayList<Card> testHand6 = new ArrayList<>();
 	@BeforeEach
 	void intialHands() {
 		testHand1.add(card2);
@@ -50,6 +51,11 @@ class JudgeTest {
 		testHand5.add(cardJ);
 		testHand5.add(card2);
 		testHand5.add(card2);
+		
+		testHand6.add(cardJ);
+		testHand6.add(cardJ);
+		testHand6.add(cardJ);
+		testHand6.add(cardJ);
 	}
 
 	@AfterEach
@@ -66,7 +72,7 @@ class JudgeTest {
 	}
 
 	@Test
-	void brelanPaireD() {
+	void testBrelanPaireD() {
 		assertEquals(2020512, testJudge.brelanDetector(testHand1));
 		assertEquals(0, testJudge.brelanDetector(testHand2));
 		assertEquals(2110004, testJudge.brelanDetector(testHand3));
@@ -78,6 +84,16 @@ class JudgeTest {
 		assertEquals(0, testJudge.paire2Detector(testHand1));
 		assertEquals(0, testJudge.paire2Detector(testHand2));
 		assertEquals(3051300, testJudge.paire2Detector(testHand5));
+	}
+	
+	@Test
+	void  testCarreD() {
+		assertEquals(0, testJudge.carreDetector(testHand1));
+		assertEquals(0, testJudge.carreDetector(testHand2));
+		assertEquals(0, testJudge.carreDetector(testHand3));
+		assertEquals(0, testJudge.carreDetector(testHand2));
+		assertEquals(0, testJudge.carreDetector(testHand5));
+		assertEquals(4110000, testJudge.carreDetector(testHand6));
 	}
 
 }
