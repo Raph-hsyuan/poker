@@ -19,7 +19,7 @@ class Judge {
 	 * BRELANPOINT+SBASEVALUE*J.shortValue()+K.longValue()+A.longValue();
 	 */
 	public static final int SBASEVALUE = 10000; // base for short value
-	public static final int LBASEVALUE = 10000; // base for long value
+	public static final int LBASEVALUE = 100; // base for long value
 	int scoreHand1 = 0;
 	int scoreHand2 = 0;
 
@@ -76,4 +76,30 @@ class Judge {
 		return point;
 	}
 
+	int paire2Detector(ArrayList<Card> cards) {
+		int paire1 = 0;
+		int paire2 = 0;
+		int point = 0;
+		for (Card card : cards) {
+			int count = 0;
+			for (Card compare : cards) {
+				if (compare.compareWith(card) == 0) {
+					count++;
+					int paire = compare.longValue();
+					if (count == 2&&paire1!=paire) {
+						if(paire1 == 0) paire1=paire;
+						else paire2=paire;
+					}
+				}
+			}
+			if (paire1 != 0 && paire2 != 0)
+				point = PAIRE2POINT + (paire1 + paire2) * LBASEVALUE;
+		}
+		if (point == 0)
+			return point;
+		for (Card find : cards)
+			if (find.longValue() != paire1 && find.longValue() != paire2)
+				point += find.shortValue();
+		return point;
+	}
 }
