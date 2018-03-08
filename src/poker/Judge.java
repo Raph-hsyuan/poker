@@ -3,7 +3,7 @@ package poker;
 import java.util.ArrayList;
 /**
  * @author Groupe A
- * @date 2018-3-1
+ * @date 2018-3-8
  */
 class Judge {
 
