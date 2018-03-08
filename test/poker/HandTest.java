@@ -34,13 +34,16 @@ public class HandTest {
 		deck3.add(card2);
 		deck3.add(card5);
 		deck3.add(card4);
-		deck3.add(card11);
 		hand.drawCard(deck3);
 	}
 
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw1() {
 		List<Card> deck1 = new ArrayList<Card>();
+		deck1.add(card2);
+		deck1.add(card2);
+		deck1.add(card2);
+		deck1.add(card2);
 		deck1.add(card2);
 		hand.drawCard(deck1);
 	}
@@ -57,9 +60,10 @@ public class HandTest {
 	public void test1RightDraw() {
 		System.setOut(new PrintStream(outContent));
 		List<Card> deck3 = new ArrayList<Card>();
-		String expected = "HAND:  2   5   J  ";
+		String expected = "HAND:  2   5   J   J  ";
 		deck3.add(card2);
 		deck3.add(card5);
+		deck3.add(card11);
 		deck3.add(card11);
 		hand.drawCard(deck3);
 		assertEquals(deck3.get(0), hand.getCard().get(0));
@@ -75,6 +79,7 @@ public class HandTest {
 		deckTest1.add(card5);
 		deckTest1.add(card4);
 		deckTest1.add(card11);
+		deckTest1.add(card11);
 		hand.drawCard(deckTest1);
 		assertEquals(card11, hand.maxCard);
 
@@ -82,6 +87,7 @@ public class HandTest {
 		deckTest2.add(card2);
 		deckTest2.add(card4);
 		deckTest2.add(card5);
+		deckTest2.add(card2);
 		hand.drawCard(deckTest2);
 		assertEquals(card5, hand.maxCard);
 

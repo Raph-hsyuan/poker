@@ -23,4 +23,12 @@ class Card {
 	public int compareWith(Card card) {
 		return this.rank.compareTo(card.rank);
 	}
+	
+	int longValue() {
+		return this.getRank().longValue();
+	}
+	
+	int shortValue() {
+		return this.getRank().shortValue();
+	}
 }
