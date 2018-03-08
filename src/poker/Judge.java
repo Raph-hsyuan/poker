@@ -3,11 +3,13 @@ package poker;
 import java.util.ArrayList;
 /**
  * @author Groupe A
- * @date 2018-3-1
+ * @date 2018-3-8
  */
 class Judge {
 
 	public static final int PAIREPOINT = 100;
+	public static final int BRELANPOINT = 300;
+
 	int scoreHand1=0;
 	int scoreHand2=0;
 	void toJudge(ArrayList<Card> handCard1, ArrayList<Card> handCard2) {
@@ -27,6 +29,25 @@ class Judge {
 					if (paire >= maxpaire && count>1) {
 						maxpaire = paire;
 						point = PAIREPOINT + maxpaire;
+					}
+				}
+			}
+		}
+		return point;
+	}
+
+	int brelanDetector(ArrayList<Card> cards) {
+		int brelan = 0;
+		int point = 0;
+		for (Card card : cards) {
+			int count = 0;
+			for (Card compare : cards) {
+				if (compare.compareWith(card) == 0) {
+					count ++;
+					int paire = compare.getRank().getValue();
+					if (count > 2) {
+						brelan = paire;
+						point = BRELANPOINT + brelan;
 					}
 				}
 			}

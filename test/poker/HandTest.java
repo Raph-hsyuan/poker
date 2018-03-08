@@ -20,7 +20,7 @@ public class HandTest {
 	Card card4 = new Card(Rank.FOUR);
 	Card card11 = new Card(Rank.JACK);
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	// @Ignore
+	// @Disabled
 	// @Test
 	// public void testGetCard() {
 	// Card r2Card = new Card(Rank.TWO);
