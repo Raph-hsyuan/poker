@@ -14,6 +14,7 @@ class Judge {
 	public static final int PAIREPOINT = 1000000;
 	public static final int BRELANPOINT = 2000000;
 	public static final int PAIRE2POINT = 3000000;
+	public static final int CARREPOINT = 4000000;
 	/**
 	 * Base of the value of card JJJKA: Point =
 	 * BRELANPOINT+SBASEVALUE*J.shortValue()+K.longValue()+A.longValue();
@@ -100,6 +101,25 @@ class Judge {
 		for (Card find : cards)
 			if (find.longValue() != paire1 && find.longValue() != paire2)
 				point += find.shortValue();
+		return point;
+	}
+	
+	int carreDetector(ArrayList<Card> cards) {
+		int carre = 0;
+		int point = 0;
+		for (Card card : cards) {
+			int count = 0;
+			for (Card compare : cards) {
+				if (compare.compareWith(card) == 0) {
+					count ++;
+					int paire = compare.shortValue();
+					if (count == 4) {
+						carre = paire;
+						point = CARREPOINT + carre*SBASEVALUE;
+					}
+				}
+			}
+		}
 		return point;
 	}
 }
