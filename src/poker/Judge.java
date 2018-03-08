@@ -12,8 +12,8 @@ class Judge {
 	 * Point of different Hand Patterns
 	 */
 	public static final int PAIREPOINT = 1000000;
-	public static final int BRELANPOINT = 2000000;
-	public static final int PAIRE2POINT = 3000000;
+	public static final int PAIRE2POINT = 2000000;
+	public static final int BRELANPOINT = 3000000;
 	public static final int CARREPOINT = 4000000;
 	/**
 	 * Base of the value of card JJJKA: Point =
@@ -21,8 +21,24 @@ class Judge {
 	 */
 	public static final int SBASEVALUE = 10000; // base for short value
 	public static final int LBASEVALUE = 100; // base for long value
-	int scoreHand1 = 0;
-	int scoreHand2 = 0;
+
+	int scoreOfHand=0;
+	
+	/**
+	 * @param hand
+	 * @return the highest score
+	 */
+	int judger(Hand hand){
+		scoreOfHand=carreDetector(hand.cards);
+		if(scoreOfHand!=0)return scoreOfHand;
+		scoreOfHand=brelanDetector(hand.cards);
+		if(scoreOfHand!=0)return scoreOfHand;
+		scoreOfHand=paire2Detector(hand.cards);
+		if(scoreOfHand!=0)return scoreOfHand;
+		scoreOfHand=paireDetector(hand.cards);
+		if(scoreOfHand!=0)return scoreOfHand;
+		return hand.maxCard.shortValue();
+	}
 
 	int paireDetector(ArrayList<Card> cards) {
 		int maxpaire = 0;
@@ -120,6 +136,11 @@ class Judge {
 				}
 			}
 		}
+		if (point == 0)
+			return point;
+		for (Card find : cards)
+			if (find.shortValue() != carre)
+				point += find.longValue();
 		return point;
 	}
 }
