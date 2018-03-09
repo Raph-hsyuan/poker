@@ -15,8 +15,8 @@ class Judge {
     public static final int PAIREPOINT = 1000000;
     public static final int PAIRE2POINT = 2000000;
     public static final int BRELANPOINT = 3000000;
-    public static final int SUITEPOINT = 4000000;
-    public static final int CARREPOINT = 7000000;
+    public static final int CARREPOINT = 4000000;
+    public static final int SUITEPOINT = 5000000;
 
     /**
      * Base of the value of card JJJKA: Point =
@@ -160,6 +160,7 @@ class Judge {
         for (int i = 0; i < cards.size()-1; i++) {
             if(cards.get(i+1).shortValue()-cards.get(i).shortValue() != 1) return 0;
         }
-        return SUITEPOINT;
+        int max = cards.get(cards.size()).shortValue();
+        return SUITEPOINT+max;
     }
 }
