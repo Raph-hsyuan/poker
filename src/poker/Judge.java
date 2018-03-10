@@ -16,6 +16,7 @@ class Judge {
 	public static final int BRELANPOINT = 3000000;
 	public static final int CARREPOINT = 4000000;
 	public static final int SUITEPOINT = 5000000;
+	public static final int FULLPOINT = 6000000;
 
 	/**
 	 * Base of the value of card JJJKA: Point =
@@ -169,5 +170,28 @@ class Judge {
 		}
 		int max = cards.get(cards.size() - 1).shortValue();
 		return SUITEPOINT + max;
+	}
+	
+	int fullDetector(ArrayList<Card> cards) {
+		HashMap<Integer,Integer> counter = new HashMap<>();
+		for (Card find : cards) {
+			int shortValue = find.shortValue();
+			if(!counter.containsKey(shortValue))
+				counter.put(shortValue, 1);
+			else {
+				int count = counter.get(shortValue);
+				counter.put(shortValue, count+1);
+			}
+		}
+		if (counter.size() == 2) {
+			int point2=0;
+			int point3=0;
+			for(HashMap.Entry<Integer,Integer> find : counter.entrySet()) {
+				if(find.getValue()==2) point2=find.getKey();
+				if(find.getValue()==3) point3=find.getKey()*SBASEVALUE;
+			}
+			return point2*point3==0? 0:FULLPOINT+point2+point3;	
+		}
+		return 0;
 	}
 }
