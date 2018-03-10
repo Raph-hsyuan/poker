@@ -32,6 +32,8 @@ class JudgeTest {
 	ArrayList<Card> testHand6 = new ArrayList<>();
 	ArrayList<Card> testHand7 = new ArrayList<>();
 	ArrayList<Card> testHand8 = new ArrayList<>();
+	ArrayList<Card> testHand9 = new ArrayList<>();
+	ArrayList<Card> testHand10 = new ArrayList<>();
 
 	@BeforeEach
 	void intialHands() {
@@ -82,6 +84,18 @@ class JudgeTest {
 		testHand8.add(card5);
 		testHand8.add(card4);
 		testHand8.add(card3);
+		
+		testHand9.add(card7);
+        testHand9.add(card7);
+        testHand9.add(card7);
+        testHand9.add(card4);
+        testHand9.add(card4);
+        
+        testHand10.add(cardJ);
+        testHand10.add(cardJ);
+        testHand10.add(cardJ);
+        testHand10.add(card5);
+        testHand10.add(card5);
 	}
 
 	@AfterEach
@@ -146,6 +160,15 @@ class JudgeTest {
 		assertEquals(0, testJudge.suiteDetector(testHand6));
 		assertEquals(5000006, testJudge.suiteDetector(testHand7));
 		assertEquals(5000007, testJudge.suiteDetector(testHand8));
+	}
+	
+	@Test
+	void testfullD(){
+	    assertEquals(0, testJudge.fullDetector(testHand3));
+	    assertEquals(0, testJudge.fullDetector(testHand2));
+	    assertEquals(6110005, testJudge.fullDetector(testHand10));
+	    assertEquals(6070004, testJudge.fullDetector(testHand9));
+	
 
 	}
 
