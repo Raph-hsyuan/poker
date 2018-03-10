@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 
 /**
@@ -30,41 +29,42 @@ public class HandTest {
 
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw3() {
-		List<Card> deck3 = new ArrayList<Card>();
+		ArrayList<Card> deck3 = new ArrayList<Card>();
 		deck3.add(card2);
 		deck3.add(card5);
 		deck3.add(card4);
+		deck3.add(card5);
 		hand.drawCard(deck3);
 	}
 
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw1() {
-		List<Card> deck1 = new ArrayList<Card>();
+		ArrayList<Card> deck1 = new ArrayList<Card>();
 		deck1.add(card2);
 		deck1.add(card2);
 		deck1.add(card2);
 		deck1.add(card2);
 		deck1.add(card2);
+		deck1.add(card5);
 		hand.drawCard(deck1);
 	}
 
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw2() {
-		List<Card> deck2 = new ArrayList<Card>();
-		deck2.add(card2);
-		deck2.add(card5);
+		ArrayList<Card> deck2 = new ArrayList<Card>();
 		hand.drawCard(deck2);
 	}
 
 	@Test
 	public void test1RightDraw() {
 		System.setOut(new PrintStream(outContent));
-		List<Card> deck3 = new ArrayList<Card>();
-		String expected = "HAND:  2   5   J   J  ";
+		ArrayList<Card> deck3 = new ArrayList<Card>();
+		String expected = "HAND:  2   5   J   J   2  ";
 		deck3.add(card2);
 		deck3.add(card5);
 		deck3.add(card11);
 		deck3.add(card11);
+		deck3.add(card2);
 		hand.drawCard(deck3);
 		assertEquals(deck3.get(0), hand.getCard().get(0));
 		assertEquals(deck3.get(1), hand.getCard().get(1));
@@ -75,7 +75,8 @@ public class HandTest {
 
 	@Test
 	public void testCompareto() {
-		List<Card> deckTest1 = new ArrayList<Card>();
+		ArrayList<Card> deckTest1 = new ArrayList<Card>();
+		deckTest1.add(card5);
 		deckTest1.add(card5);
 		deckTest1.add(card4);
 		deckTest1.add(card11);
@@ -83,9 +84,10 @@ public class HandTest {
 		hand.drawCard(deckTest1);
 		assertEquals(card11, hand.maxCard);
 
-		List<Card> deckTest2 = new ArrayList<Card>();// encore une fois
+		ArrayList<Card> deckTest2 = new ArrayList<Card>();// encore une fois
 		deckTest2.add(card2);
 		deckTest2.add(card4);
+		deckTest2.add(card5);
 		deckTest2.add(card5);
 		deckTest2.add(card2);
 		hand.drawCard(deckTest2);
