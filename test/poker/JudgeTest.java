@@ -16,14 +16,14 @@ import org.junit.jupiter.api.Test;
 class JudgeTest {
 	Judge testJudge = new Judge();
 	Hand hand = new Hand();
-	Card card2 = new Card(Rank.TWO);
-	Card card3 = new Card(Rank.THREE);
-	Card card4 = new Card(Rank.FOUR);
-	Card card5 = new Card(Rank.FIVE);
-	Card card6 = new Card(Rank.SIX);
-	Card card7 = new Card(Rank.SEVEN);
-	Card cardA = new Card(Rank.ACE);
-	Card cardJ = new Card(Rank.JACK);
+	Card card2 = new Card(Rank.TWO,Suit.CLUB);
+	Card card3 = new Card(Rank.THREE,Suit.CLUB);
+	Card card4 = new Card(Rank.FOUR,Suit.CLUB);
+	Card card5 = new Card(Rank.FIVE,Suit.CLUB);
+	Card card6 = new Card(Rank.SIX,Suit.CLUB);
+	Card card7 = new Card(Rank.SEVEN,Suit.CLUB);
+	Card cardA = new Card(Rank.ACE,Suit.DIAMOND);
+	Card cardJ = new Card(Rank.JACK,Suit.HEART);
 	ArrayList<Card> testHand1 = new ArrayList<>();
 	ArrayList<Card> testHand2 = new ArrayList<>();
 	ArrayList<Card> testHand3 = new ArrayList<>();
@@ -109,17 +109,17 @@ class JudgeTest {
 	void testJudger() {
 		Hand hand = new Hand();
 		hand.drawCard(testHand1);
-		assertEquals(3024608, testJudge.judger(hand));
+		assertEquals(3024608, testJudge.toPoint(hand));
 		hand.drawCard(testHand2);
-		assertEquals(3040513, testJudge.judger(hand));
+		assertEquals(3040513, testJudge.toPoint(hand));
 		hand.drawCard(testHand3);
-		assertEquals(4110004, testJudge.judger(hand));
+		assertEquals(7110004, testJudge.toPoint(hand));
 		hand.drawCard(testHand4);
-		assertEquals(1114101, testJudge.judger(hand));
+		assertEquals(1114101, testJudge.toPoint(hand));
 		hand.drawCard(testHand5);
-		assertEquals(2051304, testJudge.judger(hand));
+		assertEquals(2051304, testJudge.toPoint(hand));
 		hand.drawCard(testHand6);
-		assertEquals(4110001, testJudge.judger(hand));
+		assertEquals(7110001, testJudge.toPoint(hand));
 	}
 
 	@Test
@@ -149,17 +149,17 @@ class JudgeTest {
 	void testCarreD() {
 		assertEquals(0, testJudge.carreDetector(testHand1));
 		assertEquals(0, testJudge.carreDetector(testHand2));
-		assertEquals(4110004, testJudge.carreDetector(testHand3));
+		assertEquals(7110004, testJudge.carreDetector(testHand3));
 		assertEquals(0, testJudge.carreDetector(testHand5));
-		assertEquals(4110001, testJudge.carreDetector(testHand6));
+		assertEquals(7110001, testJudge.carreDetector(testHand6));
 	}
 
 	@Test
 	void testSuiteD() {
 		assertEquals(0, testJudge.suiteDetector(testHand5));
 		assertEquals(0, testJudge.suiteDetector(testHand6));
-		assertEquals(5000006, testJudge.suiteDetector(testHand7));
-		assertEquals(5000007, testJudge.suiteDetector(testHand8));
+		assertEquals(4000006, testJudge.suiteDetector(testHand7));
+		assertEquals(4000007, testJudge.suiteDetector(testHand8));
 	}
 	
 	@Test

@@ -9,23 +9,16 @@ import org.junit.Test;
 
 /**
  * @author Groupe A
- * @date 2018-3-6
+ * @date 2018-3-10
  */
 public class HandTest {
 
 	Hand hand = new Hand();
-	Card card2 = new Card(Rank.TWO);
-	Card card5 = new Card(Rank.FIVE);
-	Card card4 = new Card(Rank.FOUR);
-	Card card11 = new Card(Rank.JACK);
+	Card card2 = new Card(Rank.TWO,Suit.CLUB);
+	Card card5 = new Card(Rank.FIVE,Suit.CLUB);
+	Card card4 = new Card(Rank.FOUR,Suit.CLUB);
+	Card card11 = new Card(Rank.JACK,Suit.CLUB);
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	// @Disabled
-	// @Test
-	// public void testGetCard() {
-	// Card r2Card = new Card(Rank.TWO);
-	// hand.drawCard(r2Card);
-	// assertEquals(Rank.TWO, hand.getCard().getRank());
-	// }
 
 	@Test(expected = java.lang.RuntimeException.class)
 	public void test1WrongDraw3() {
@@ -59,7 +52,7 @@ public class HandTest {
 	public void test1RightDraw() {
 		System.setOut(new PrintStream(outContent));
 		ArrayList<Card> deck3 = new ArrayList<Card>();
-		String expected = "HAND:  2   5   J   J   2  ";
+		String expected = "HAND: 2C 5C JC JC 2C ";
 		deck3.add(card2);
 		deck3.add(card5);
 		deck3.add(card11);
