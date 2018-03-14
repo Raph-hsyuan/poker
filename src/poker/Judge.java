@@ -4,19 +4,21 @@ import java.util.*;
 
 /**
  * @author Groupe A
- * @date 2018-3-9
+ * @date 2018-3-14
  */
 class Judge {
 
 	/**
 	 * Point of different Hand Patterns
 	 */
-	public static final int PAIREPOINT = 1000000;
-	public static final int PAIRE2POINT = 2000000;
-	public static final int BRELANPOINT = 3000000;
-	public static final int CARREPOINT = 4000000;
-	public static final int SUITEPOINT = 5000000;
-	public static final int FULLPOINT = 6000000;
+	public static final int PAIREPOINT = 1000000;// yes
+	public static final int PAIRE2POINT = 2000000;// yes
+	public static final int BRELANPOINT = 3000000;// yes
+	public static final int SUITEPOINT = 4000000;// yes
+	public static final int COULEURPOINT = 5000000;
+	public static final int FULLPOINT = 6000000;// yes
+	public static final int CARREPOINT = 7000000;// yes
+	public static final int QFPOINT = 4000000;
 
 	/**
 	 * Base of the value of card JJJKA: Point =
@@ -26,15 +28,36 @@ class Judge {
 	public static final int LBASEVALUE = 100; // base for long value
 
 	int scoreOfHand = 0;
+	String result;
 
 	/**
 	 * @param hand
 	 * @return the highest score
 	 */
-	int judger(Hand hand) {
+
+	String judger(Hand hand1, Hand hand2) {
+		int point1 = this.toPoint(hand1);
+		String result1 = "player1 win! " + result;
+		int point2 = this.toPoint(hand2);
+		String result2 = "player2 win! " + result;
+		if (point1 == point2)
+			return "tie";
+		return point1 > point2 ? result1 : result2;
+	}
+
+	int toPoint(Hand hand) {
+		// scoreOfHand = qfDetector(hand.cards);
+		// if (scoreOfHand != 0)
+		// return scoreOfHand;
 		scoreOfHand = carreDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
+		scoreOfHand = fullDetector(hand.cards);
+		if (scoreOfHand != 0)
+			return scoreOfHand;
+		// scoreOfHand = colorDetector(hand.cards);
+		// if (scoreOfHand != 0)
+		// return scoreOfHand;
 		scoreOfHand = suiteDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
@@ -47,6 +70,7 @@ class Judge {
 		scoreOfHand = paireDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
+		result = "High Card : " + hand.maxCard;
 		return hand.maxCard.shortValue();
 	}
 
@@ -76,6 +100,8 @@ class Judge {
 		for (Card find : cards)
 			if (find.shortValue() != maxpaire)
 				point += find.longValue();
+			else
+				result = "Pair of " + find.getRank();
 		return point;
 	}
 
@@ -100,6 +126,8 @@ class Judge {
 		for (Card find : cards)
 			if (find.shortValue() != brelan)
 				point += find.longValue();
+			else
+				result = "Brelan of " + find.getRank();
 		return point;
 	}
 
@@ -129,6 +157,9 @@ class Judge {
 		for (Card find : cards)
 			if (find.longValue() != paire1 && find.longValue() != paire2)
 				point += find.shortValue();
+		Rank[] myrank = Rank.values();
+		result = "Two Pair: " + myrank[(int) (Math.log(paire1) / Math.log(2))]
+				+ myrank[(int) (Math.log(paire2) / Math.log(2))];
 		return point;
 	}
 
@@ -153,6 +184,8 @@ class Judge {
 		for (Card find : cards)
 			if (find.shortValue() != carre)
 				point += find.longValue();
+			else
+				result = "Carre of " + find.getRank();
 		return point;
 	}
 
@@ -169,28 +202,34 @@ class Judge {
 				return 0;
 		}
 		int max = cards.get(cards.size() - 1).shortValue();
+		result = "Suit of " + cards.get(cards.size() - 1).getRank();
 		return SUITEPOINT + max;
 	}
-	
+
 	int fullDetector(ArrayList<Card> cards) {
-		HashMap<Integer,Integer> counter = new HashMap<>();
+		HashMap<Integer, Integer> counter = new HashMap<>();
 		for (Card find : cards) {
 			int shortValue = find.shortValue();
-			if(!counter.containsKey(shortValue))
+			if (!counter.containsKey(shortValue))
 				counter.put(shortValue, 1);
 			else {
 				int count = counter.get(shortValue);
-				counter.put(shortValue, count+1);
+				counter.put(shortValue, count + 1);
 			}
 		}
 		if (counter.size() == 2) {
-			int point2=0;
-			int point3=0;
-			for(HashMap.Entry<Integer,Integer> find : counter.entrySet()) {
-				if(find.getValue()==2) point2=find.getKey();
-				if(find.getValue()==3) point3=find.getKey()*SBASEVALUE;
+			int point2 = 0;
+			int point3 = 0;
+			for (HashMap.Entry<Integer, Integer> find : counter.entrySet()) {
+				if (find.getValue() == 2)
+					point2 = find.getKey();
+				if (find.getValue() == 3)
+					point3 = find.getKey() * SBASEVALUE;
 			}
-			return point2*point3==0? 0:FULLPOINT+point2+point3;	
+			Rank[] myrank = Rank.values();
+			result = "Full :" + myrank[point3 / SBASEVALUE] + " over " + myrank[point2];
+			return point2 * point3 == 0 ? 
+					0 : FULLPOINT + point2 + point3;
 		}
 		return 0;
 	}
