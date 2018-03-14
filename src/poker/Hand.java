@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 /**
  * @author Groupe A
- * @date 2018-3-6
+ * @date 2018-3-10
  */
 class Hand {
 	ArrayList<Card> cards = new ArrayList<>();
-	private static final Card MINICARD = new Card(Rank.TWO);
+	private static final Card MINICARD = new Card(Rank.TWO,Suit.CLUB);
 	private static final int HAND_LIMIT = 5;
 	Card maxCard;
 
