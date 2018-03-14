@@ -3,8 +3,6 @@ package poker;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +22,12 @@ class JudgeTest {
 	Card card7 = new Card(Rank.SEVEN,Suit.CLUB);
 	Card cardA = new Card(Rank.ACE,Suit.DIAMOND);
 	Card cardJ = new Card(Rank.JACK,Suit.HEART);
+	Card card2C = new Card(Rank.TWO,Suit.CLUB);
+	Card card3C = new Card(Rank.THREE,Suit.CLUB);
+	Card card4C = new Card(Rank.FOUR,Suit.CLUB);
+	Card card5C = new Card(Rank.FIVE,Suit.CLUB);
+	Card card6C = new Card(Rank.SIX,Suit.CLUB);
+	Card card7C = new Card(Rank.SEVEN,Suit.CLUB);
 	ArrayList<Card> testHand1 = new ArrayList<>();
 	ArrayList<Card> testHand2 = new ArrayList<>();
 	ArrayList<Card> testHand3 = new ArrayList<>();
@@ -34,7 +38,8 @@ class JudgeTest {
 	ArrayList<Card> testHand8 = new ArrayList<>();
 	ArrayList<Card> testHand9 = new ArrayList<>();
 	ArrayList<Card> testHand10 = new ArrayList<>();
-
+	ArrayList<Card> testHand11 = new ArrayList<>();
+	ArrayList<Card> testHand12 = new ArrayList<>();
 	@BeforeEach
 	void intialHands() {
 		testHand1.add(card2);
@@ -96,14 +101,20 @@ class JudgeTest {
         testHand10.add(cardJ);
         testHand10.add(card5);
         testHand10.add(card5);
+        
+        testHand11.add(card2C);
+        testHand11.add(card3C);
+        testHand11.add(card4C);
+        testHand11.add(card5C);
+        testHand11.add(card7C);
+        
+        testHand12.add(card2C);
+        testHand12.add(card3C);
+        testHand12.add(card4C);
+        testHand12.add(card5C);
+        testHand12.add(card6C);
 	}
 
-	@AfterEach
-	void clearHands() {
-		testHand1.clear();
-		testHand2.clear();
-		testHand3.clear();
-	}
 
 	@Test
 	void testJudger() {
@@ -168,8 +179,5 @@ class JudgeTest {
 	    assertEquals(0, testJudge.fullDetector(testHand2));
 	    assertEquals(6110005, testJudge.fullDetector(testHand10));
 	    assertEquals(6070004, testJudge.fullDetector(testHand9));
-	
-
 	}
-
 }

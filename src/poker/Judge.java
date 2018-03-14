@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * @author Groupe A
- * @date 2018-3-10
+ * @date 2018-3-14
  */
 class Judge {
 
@@ -18,7 +18,7 @@ class Judge {
 	public static final int COULEURPOINT = 5000000;
 	public static final int FULLPOINT = 6000000;// yes
 	public static final int CARREPOINT = 7000000;// yes
-	public static final int QFPOINT = 8000000;
+	public static final int QFPOINT = 4000000;
 
 	/**
 	 * Base of the value of card JJJKA: Point =
@@ -37,20 +37,27 @@ class Judge {
 
 	String judger(Hand hand1, Hand hand2) {
 		int point1 = this.toPoint(hand1);
-		String result1="player1 win! "+result;
+		String result1 = "player1 win! " + result;
 		int point2 = this.toPoint(hand2);
-		String result2="player2 win! "+result;
-		if(point1==point2) return "tie";
-		return point1>point2? result1:result2;
+		String result2 = "player2 win! " + result;
+		if (point1 == point2)
+			return "tie";
+		return point1 > point2 ? result1 : result2;
 	}
 
 	int toPoint(Hand hand) {
+		// scoreOfHand = qfDetector(hand.cards);
+		// if (scoreOfHand != 0)
+		// return scoreOfHand;
 		scoreOfHand = carreDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
 		scoreOfHand = fullDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
+		// scoreOfHand = colorDetector(hand.cards);
+		// if (scoreOfHand != 0)
+		// return scoreOfHand;
 		scoreOfHand = suiteDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
@@ -178,7 +185,7 @@ class Judge {
 			if (find.shortValue() != carre)
 				point += find.longValue();
 			else
-				result = "Carre of "+find.getRank();
+				result = "Carre of " + find.getRank();
 		return point;
 	}
 
@@ -195,7 +202,7 @@ class Judge {
 				return 0;
 		}
 		int max = cards.get(cards.size() - 1).shortValue();
-		result = "Suit of "+cards.get(cards.size() - 1).getRank();
+		result = "Suit of " + cards.get(cards.size() - 1).getRank();
 		return SUITEPOINT + max;
 	}
 
@@ -219,9 +226,10 @@ class Judge {
 				if (find.getValue() == 3)
 					point3 = find.getKey() * SBASEVALUE;
 			}
-			Rank[] myrank=Rank.values();
-			result="Full :"+myrank[point3/SBASEVALUE-2]+" over "+myrank[point2-2];
-			return point2 * point3 == 0 ? 0 : FULLPOINT + point2 + point3;
+			Rank[] myrank = Rank.values();
+			result = "Full :" + myrank[point3 / SBASEVALUE] + " over " + myrank[point2];
+			return point2 * point3 == 0 ? 
+					0 : FULLPOINT + point2 + point3;
 		}
 		return 0;
 	}
