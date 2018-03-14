@@ -18,7 +18,7 @@ class Judge {
 	public static final int COULEURPOINT = 5000000;//yes
 	public static final int FULLPOINT = 6000000;// yes
 	public static final int CARREPOINT = 7000000;// yes
-	public static final int QFPOINT = 4000000;
+	public static final int QFPOINT = 4000000;//yes
 
 	/**
 	 * Base of the value of card JJJKA: Point =
@@ -46,18 +46,18 @@ class Judge {
 	}
 
 	int toPoint(Hand hand) {
-		// scoreOfHand = qfDetector(hand.cards);
-		// if (scoreOfHand != 0)
-		// return scoreOfHand;
+		 scoreOfHand = qfDetector(hand.cards);
+		 if (scoreOfHand != 0)
+		 return scoreOfHand;
 		scoreOfHand = carreDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
 		scoreOfHand = fullDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
-		scoreOfHand = colorDetector(hand.cards);
-		if (scoreOfHand != 0)
-		                return scoreOfHand;
+		 scoreOfHand = colorDetector(hand.cards);
+		 if (scoreOfHand != 0)
+		 return scoreOfHand;
 		scoreOfHand = suiteDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
@@ -244,4 +244,10 @@ class Judge {
 		}
 		return point + COULEURPOINT;
 	}
+
+	int qfDetector(ArrayList<Card> cards) {
+		return colorDetector(cards) * suiteDetector(cards) == 0 ?
+				0 : QFPOINT + suiteDetector(cards);
+	}
+
 }

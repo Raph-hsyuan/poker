@@ -207,4 +207,12 @@ class JudgeTest {
 		assertEquals(5000031, testJudge.colorDetector(testHand12));
 	}
 
+	@Test
+	void testqfD() {
+		assertEquals(0, testJudge.qfDetector(testHand3));
+		assertEquals(0, testJudge.qfDetector(testHand2));
+		assertEquals(0, testJudge.qfDetector(testHand11));
+		assertEquals(8000006, testJudge.qfDetector(testHand12));
+	}
+
 }
