@@ -3,31 +3,33 @@ package poker;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author Groupe A
- * @date 2018-3-9
+ * @date 2018-3-14
  */
 
 class JudgeTest {
 	Judge testJudge = new Judge();
 	Hand hand = new Hand();
-	Card card2 = new Card(Rank.TWO,Suit.CLUB);
-	Card card3 = new Card(Rank.THREE,Suit.CLUB);
-	Card card4 = new Card(Rank.FOUR,Suit.CLUB);
-	Card card5 = new Card(Rank.FIVE,Suit.CLUB);
-	Card card6 = new Card(Rank.SIX,Suit.CLUB);
-	Card card7 = new Card(Rank.SEVEN,Suit.CLUB);
-	Card cardA = new Card(Rank.ACE,Suit.DIAMOND);
-	Card cardJ = new Card(Rank.JACK,Suit.HEART);
-	Card card2C = new Card(Rank.TWO,Suit.CLUB);
-	Card card3C = new Card(Rank.THREE,Suit.CLUB);
-	Card card4C = new Card(Rank.FOUR,Suit.CLUB);
-	Card card5C = new Card(Rank.FIVE,Suit.CLUB);
-	Card card6C = new Card(Rank.SIX,Suit.CLUB);
-	Card card7C = new Card(Rank.SEVEN,Suit.CLUB);
+	Card card2 = new Card(Rank.TWO, Suit.CLUB);
+	Card card3 = new Card(Rank.THREE, Suit.CLUB);
+	Card card4 = new Card(Rank.FOUR, Suit.CLUB);
+	Card card5 = new Card(Rank.FIVE, Suit.CLUB);
+	Card card6 = new Card(Rank.SIX, Suit.CLUB);
+	Card card7 = new Card(Rank.SEVEN, Suit.CLUB);
+	Card cardA = new Card(Rank.ACE, Suit.DIAMOND);
+	Card cardJ = new Card(Rank.JACK, Suit.HEART);
+	Card card2C = new Card(Rank.TWO, Suit.CLUB);
+	Card card3C = new Card(Rank.THREE, Suit.CLUB);
+	Card card4C = new Card(Rank.FOUR, Suit.CLUB);
+	Card card5C = new Card(Rank.FIVE, Suit.CLUB);
+	Card card6C = new Card(Rank.SIX, Suit.CLUB);
+	Card card7C = new Card(Rank.SEVEN, Suit.CLUB);
 	ArrayList<Card> testHand1 = new ArrayList<>();
 	ArrayList<Card> testHand2 = new ArrayList<>();
 	ArrayList<Card> testHand3 = new ArrayList<>();
@@ -40,6 +42,7 @@ class JudgeTest {
 	ArrayList<Card> testHand10 = new ArrayList<>();
 	ArrayList<Card> testHand11 = new ArrayList<>();
 	ArrayList<Card> testHand12 = new ArrayList<>();
+
 	@BeforeEach
 	void intialHands() {
 		testHand1.add(card2);
@@ -89,32 +92,47 @@ class JudgeTest {
 		testHand8.add(card5);
 		testHand8.add(card4);
 		testHand8.add(card3);
-		
+
 		testHand9.add(card7);
-        testHand9.add(card7);
-        testHand9.add(card7);
-        testHand9.add(card4);
-        testHand9.add(card4);
-        
-        testHand10.add(cardJ);
-        testHand10.add(cardJ);
-        testHand10.add(cardJ);
-        testHand10.add(card5);
-        testHand10.add(card5);
-        
-        testHand11.add(card2C);
-        testHand11.add(card3C);
-        testHand11.add(card4C);
-        testHand11.add(card5C);
-        testHand11.add(card7C);
-        
-        testHand12.add(card2C);
-        testHand12.add(card3C);
-        testHand12.add(card4C);
-        testHand12.add(card5C);
-        testHand12.add(card6C);
+		testHand9.add(card7);
+		testHand9.add(card7);
+		testHand9.add(card4);
+		testHand9.add(card4);
+
+		testHand10.add(cardJ);
+		testHand10.add(cardJ);
+		testHand10.add(cardJ);
+		testHand10.add(card5);
+		testHand10.add(card5);
+
+		testHand11.add(card2C);
+		testHand11.add(card3C);
+		testHand11.add(card4C);
+		testHand11.add(card5C);
+		testHand11.add(card7C);
+
+		testHand12.add(card2C);
+		testHand12.add(card3C);
+		testHand12.add(card4C);
+		testHand12.add(card5C);
+		testHand12.add(card6C);
 	}
 
+	@AfterEach
+	void clearHands() {
+		testHand1.clear();
+		testHand2.clear();
+		testHand3.clear();
+		testHand4.clear();
+		testHand5.clear();
+		testHand6.clear();
+		testHand7.clear();
+		testHand8.clear();
+		testHand9.clear();
+		testHand10.clear();
+		testHand11.clear();
+		testHand12.clear();
+	}
 
 	@Test
 	void testJudger() {
@@ -172,12 +190,21 @@ class JudgeTest {
 		assertEquals(4000006, testJudge.suiteDetector(testHand7));
 		assertEquals(4000007, testJudge.suiteDetector(testHand8));
 	}
-	
+
 	@Test
-	void testfullD(){
-	    assertEquals(0, testJudge.fullDetector(testHand3));
-	    assertEquals(0, testJudge.fullDetector(testHand2));
-	    assertEquals(6110005, testJudge.fullDetector(testHand10));
-	    assertEquals(6070004, testJudge.fullDetector(testHand9));
+	void testfullD() {
+		assertEquals(0, testJudge.fullDetector(testHand3));
+		assertEquals(0, testJudge.fullDetector(testHand2));
+		assertEquals(6110005, testJudge.fullDetector(testHand10));
+		assertEquals(6070004, testJudge.fullDetector(testHand9));
 	}
+
+	@Test
+	void testColorD() {
+		assertEquals(0, testJudge.colorDetector(testHand3));
+		assertEquals(0, testJudge.colorDetector(testHand2));
+		assertEquals(5000047, testJudge.colorDetector(testHand11));
+		assertEquals(5000031, testJudge.colorDetector(testHand12));
+	}
+
 }

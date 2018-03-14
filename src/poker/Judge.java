@@ -15,7 +15,7 @@ class Judge {
 	public static final int PAIRE2POINT = 2000000;// yes
 	public static final int BRELANPOINT = 3000000;// yes
 	public static final int SUITEPOINT = 4000000;// yes
-	public static final int COULEURPOINT = 5000000;
+	public static final int COULEURPOINT = 5000000;//yes
 	public static final int FULLPOINT = 6000000;// yes
 	public static final int CARREPOINT = 7000000;// yes
 	public static final int QFPOINT = 4000000;
@@ -55,9 +55,9 @@ class Judge {
 		scoreOfHand = fullDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
-		// scoreOfHand = colorDetector(hand.cards);
-		// if (scoreOfHand != 0)
-		// return scoreOfHand;
+		scoreOfHand = colorDetector(hand.cards);
+		if (scoreOfHand != 0)
+		                return scoreOfHand;
 		scoreOfHand = suiteDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
@@ -232,5 +232,16 @@ class Judge {
 					0 : FULLPOINT + point2 + point3;
 		}
 		return 0;
+	}
+
+	int colorDetector(ArrayList<Card> cards) {
+		Suit suit = cards.get(0).getSuit();
+		int point = 0;
+		for (Card card : cards) {
+			if (!suit.equals(card.getSuit()))
+				return 0;
+			point += card.longValue();
+		}
+		return point + COULEURPOINT;
 	}
 }
