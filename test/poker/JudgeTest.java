@@ -1,13 +1,12 @@
 package poker;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import java.util.HashMap;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+import static poker.Rank.*;
+import static poker.Suit.*;
 /**
  * @author Groupe A
  * @date 2018-3-14
@@ -16,203 +15,107 @@ import org.junit.jupiter.api.Test;
 class JudgeTest {
 	Judge testJudge = new Judge();
 	Hand hand = new Hand();
-	Card card2 = new Card(Rank.TWO, Suit.CLUB);
-	Card card3 = new Card(Rank.THREE, Suit.CLUB);
-	Card card4 = new Card(Rank.FOUR, Suit.CLUB);
-	Card card5 = new Card(Rank.FIVE, Suit.CLUB);
-	Card card6 = new Card(Rank.SIX, Suit.CLUB);
-	Card card7 = new Card(Rank.SEVEN, Suit.CLUB);
-	Card cardA = new Card(Rank.ACE, Suit.DIAMOND);
-	Card cardJ = new Card(Rank.JACK, Suit.HEART);
-	Card card2C = new Card(Rank.TWO, Suit.CLUB);
-	Card card3C = new Card(Rank.THREE, Suit.CLUB);
-	Card card4C = new Card(Rank.FOUR, Suit.CLUB);
-	Card card5C = new Card(Rank.FIVE, Suit.CLUB);
-	Card card6C = new Card(Rank.SIX, Suit.CLUB);
-	Card card7C = new Card(Rank.SEVEN, Suit.CLUB);
-	ArrayList<Card> testHand1 = new ArrayList<>();
-	ArrayList<Card> testHand2 = new ArrayList<>();
-	ArrayList<Card> testHand3 = new ArrayList<>();
-	ArrayList<Card> testHand4 = new ArrayList<>();
-	ArrayList<Card> testHand5 = new ArrayList<>();
-	ArrayList<Card> testHand6 = new ArrayList<>();
-	ArrayList<Card> testHand7 = new ArrayList<>();
-	ArrayList<Card> testHand8 = new ArrayList<>();
-	ArrayList<Card> testHand9 = new ArrayList<>();
-	ArrayList<Card> testHand10 = new ArrayList<>();
-	ArrayList<Card> testHand11 = new ArrayList<>();
-	ArrayList<Card> testHand12 = new ArrayList<>();
-
-	@BeforeEach
-	void intialHands() {
-		testHand1.add(card2);
-		testHand1.add(card2);
-		testHand1.add(card2);
-		testHand1.add(cardJ);
-		testHand1.add(cardA);
-
-		testHand2.add(card2);
-		testHand2.add(card4);
-		testHand2.add(cardJ);
-		testHand2.add(card4);
-		testHand2.add(card4);
-
-		testHand3.add(cardJ);
-		testHand3.add(cardJ);
-		testHand3.add(cardJ);
-		testHand3.add(card4);
-		testHand3.add(cardJ);
-
-		testHand4.add(cardJ);
-		testHand4.add(cardJ);
-		testHand4.add(cardA);
-		testHand4.add(card4);
-		testHand4.add(card2);
-
-		testHand5.add(cardJ);
-		testHand5.add(cardJ);
-		testHand5.add(card4);
-		testHand5.add(card2);
-		testHand5.add(card2);
-
-		testHand6.add(cardJ);
-		testHand6.add(cardJ);
-		testHand6.add(cardJ);
-		testHand6.add(cardJ);
-		testHand6.add(card2);
-
-		testHand7.add(card4);
-		testHand7.add(card5);
-		testHand7.add(card3);
-		testHand7.add(card6);
-		testHand7.add(card2);
-
-		testHand8.add(card7);
-		testHand8.add(card6);
-		testHand8.add(card5);
-		testHand8.add(card4);
-		testHand8.add(card3);
-
-		testHand9.add(card7);
-		testHand9.add(card7);
-		testHand9.add(card7);
-		testHand9.add(card4);
-		testHand9.add(card4);
-
-		testHand10.add(cardJ);
-		testHand10.add(cardJ);
-		testHand10.add(cardJ);
-		testHand10.add(card5);
-		testHand10.add(card5);
-
-		testHand11.add(card2C);
-		testHand11.add(card3C);
-		testHand11.add(card4C);
-		testHand11.add(card5C);
-		testHand11.add(card7C);
-
-		testHand12.add(card2C);
-		testHand12.add(card3C);
-		testHand12.add(card4C);
-		testHand12.add(card5C);
-		testHand12.add(card6C);
+	static HashMap<Suit, HashMap<Rank, Card>> myCards = new HashMap<>();
+	Card getCard(Rank rank, Suit suit) {
+		return myCards.get(suit).get(rank);
 	}
 
-	@AfterEach
-	void clearHands() {
-		testHand1.clear();
-		testHand2.clear();
-		testHand3.clear();
-		testHand4.clear();
-		testHand5.clear();
-		testHand6.clear();
-		testHand7.clear();
-		testHand8.clear();
-		testHand9.clear();
-		testHand10.clear();
-		testHand11.clear();
-		testHand12.clear();
+	ArrayList<Card> toCardList(Rank rank1,Suit suit1,
+							 Rank rank2,Suit suit2,
+							 Rank rank3,Suit suit3,
+							 Rank rank4,Suit suit4,
+							 Rank rank5,Suit suit5) {
+		
+		ArrayList<Card> mylist = new ArrayList<>();
+		mylist.add(new Card(rank1,suit1));
+		mylist.add(new Card(rank2,suit2));
+		mylist.add(new Card(rank3,suit3));
+		mylist.add(new Card(rank4,suit4));
+		mylist.add(new Card(rank5,suit5));
+		return mylist;
+		
+	}
+	
+	@BeforeAll
+	static void initialCard() {
+		for (Suit suit : Suit.values())
+			for (Rank rank : Rank.values()) {
+				HashMap<Rank, Card> keyRank = new HashMap<>();
+				keyRank.put(rank, new Card(rank, suit));
+				myCards.put(suit, keyRank);
+			}
+		
 	}
 
-	@Test
-	void testJudger() {
-		Hand hand = new Hand();
-		hand.drawCard(testHand1);
-		assertEquals(3024608, testJudge.toPoint(hand));
-		hand.drawCard(testHand2);
-		assertEquals(3040513, testJudge.toPoint(hand));
-		hand.drawCard(testHand3);
-		assertEquals(7110004, testJudge.toPoint(hand));
-		hand.drawCard(testHand4);
-		assertEquals(1114101, testJudge.toPoint(hand));
-		hand.drawCard(testHand5);
-		assertEquals(2051304, testJudge.toPoint(hand));
-		hand.drawCard(testHand6);
-		assertEquals(7110001, testJudge.toPoint(hand));
-	}
+	
+	 @Test
+	 void testJudger() {
 
+	 }
+	
+	 
 	@Test
 	void testPaireD() {
-		assertEquals(1040513, testJudge.paireDetector(testHand2));
-		assertEquals(1114101, testJudge.paireDetector(testHand4));
-	}
+		ArrayList<Card> c9C_9D_KD_QS_JH = new ArrayList<>();
+		c9C_9D_KD_QS_JH = toCardList
+				(NINE,CLUB,NINE,DIAMOND,KING,DIAMOND,QUEEN,SPADE,JACK,HEART);
+		ArrayList<Card> c9H_9S_KC_QD_JC = new ArrayList<>();
+		c9H_9S_KC_QD_JC = toCardList
+				(NINE,HEART,NINE,SPADE,KING,CLUB,QUEEN,DIAMOND,JACK,CLUB);
+		ArrayList<Card> c9C_9D_10H_5H_4S = new ArrayList<>();
+		c9C_9D_10H_5H_4S = toCardList
+				(NINE,CLUB,NINE,DIAMOND,TEN,HEART,FIVE,HEART,FOUR,SPADE);
+		ArrayList<Card> c9H_9S_10C_8H_4D = new ArrayList<>();
+		c9H_9S_10C_8H_4D = toCardList
+				(NINE,HEART,NINE,SPADE,TEN,CLUB,EIGHT,HEART,FOUR,DIAMOND);
+		ArrayList<Card> c8C_8D_KD_QS_3H = new ArrayList<>();
+		c8C_8D_KD_QS_3H = toCardList
+				(EIGHT,CLUB,EIGHT,DIAMOND,KING,DIAMOND,QUEEN,SPADE,THREE,HEART);
+		ArrayList<Card> cJH_JS_KS_QH_3D = new ArrayList<>();
+		cJH_JS_KS_QH_3D = toCardList
+				(JACK,HEART,JACK,SPADE,KING,SPADE,QUEEN,HEART,THREE,DIAMOND);
+		assertTrue(testJudge.paireDetector(c9C_9D_KD_QS_JH)<testJudge.paireDetector(c9H_9S_KC_QD_JC));
+		assertTrue(testJudge.paireDetector(c9C_9D_10H_5H_4S)<testJudge.paireDetector(c9H_9S_10C_8H_4D));
+		assertTrue(testJudge.paireDetector(c8C_8D_KD_QS_3H)<testJudge.paireDetector(cJH_JS_KS_QH_3D));
+		
+		
+		
 
-	@Test
-	void testBrelanPaireD() {
-		assertEquals(3024608, testJudge.brelanDetector(testHand1));
-		assertEquals(3040513, testJudge.brelanDetector(testHand2));
-		assertEquals(3110004, testJudge.brelanDetector(testHand3));
-		assertEquals(0, testJudge.brelanDetector(testHand4));
 	}
+	
+	 @Test
+	 void testBrelanPaireD() {
 
-	@Test
-	void paire2D() {
-		assertEquals(0, testJudge.paire2Detector(testHand1));
-		assertEquals(0, testJudge.paire2Detector(testHand2));
-		assertEquals(0, testJudge.paire2Detector(testHand3));
-		assertEquals(0, testJudge.paire2Detector(testHand4));
-		assertEquals(2051304, testJudge.paire2Detector(testHand5));
-	}
+	 }
+	
+	 @Test
+	 void paire2D() {
 
-	@Test
-	void testCarreD() {
-		assertEquals(0, testJudge.carreDetector(testHand1));
-		assertEquals(0, testJudge.carreDetector(testHand2));
-		assertEquals(7110004, testJudge.carreDetector(testHand3));
-		assertEquals(0, testJudge.carreDetector(testHand5));
-		assertEquals(7110001, testJudge.carreDetector(testHand6));
-	}
+	 }
+	
+	 @Test
+	 void testCarreD() {
 
-	@Test
-	void testSuiteD() {
-		assertEquals(0, testJudge.suiteDetector(testHand5));
-		assertEquals(0, testJudge.suiteDetector(testHand6));
-		assertEquals(4000006, testJudge.suiteDetector(testHand7));
-		assertEquals(4000007, testJudge.suiteDetector(testHand8));
-	}
+	 }
+	
+	 @Test
+	 void testSuiteD() {
 
-	@Test
-	void testfullD() {
-		assertEquals(0, testJudge.fullDetector(testHand3));
-		assertEquals(0, testJudge.fullDetector(testHand2));
-		assertEquals(6110005, testJudge.fullDetector(testHand10));
-		assertEquals(6070004, testJudge.fullDetector(testHand9));
-	}
+	 }
+	
+	 @Test
+	 void testfullD() {
 
-	@Test
-	void testColorD() {
-		assertEquals(0, testJudge.colorDetector(testHand3));
-		assertEquals(0, testJudge.colorDetector(testHand2));
-		assertEquals(5000047, testJudge.colorDetector(testHand11));
-		assertEquals(5000031, testJudge.colorDetector(testHand12));
-	}
+	 }
+	
+	 @Test
+	 void testColorD() {
 
-	@Test
-	void testqfD() {
-		assertEquals(0, testJudge.qfDetector(testHand3));
-		assertEquals(0, testJudge.qfDetector(testHand2));
-		assertEquals(0, testJudge.qfDetector(testHand11));
-		assertEquals(8000006, testJudge.qfDetector(testHand12));
-	}
+	 }
+	
+	 @Test
+	 void testqfD() {
 
+	 }
+	
 }

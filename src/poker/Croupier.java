@@ -17,9 +17,9 @@ public class Croupier {
 	Judge myJudge=new Judge();
 	void startGame() {
 		System.out.printf("Player1: ");
-		player1.addAll(this.toCards());
+		player1.addAll(toCards(this.check()));
 		System.out.printf("Player2: ");
-		player2.addAll(this.toCards());
+		player2.addAll(toCards(this.check()));
 		cardReader.close();
 		p1Hand.drawCard(player1);
 		p2Hand.drawCard(player2);
@@ -29,13 +29,11 @@ public class Croupier {
 	private String[] check() {
 		String line;
 		line = cardReader.nextLine();
-
 		return line.split(" ");
 	}
 
-	private ArrayList<Card> toCards() {
+	ArrayList<Card> toCards(String[] allCard) {
 		ArrayList<Card> handCard = new ArrayList<>();
-		String[] allCard=this.check();
 		for (String card : allCard) {
 			String[] rs = card.split("");
 			handCard.add(new Card(this.toRank(rs[0]), this.toSuit(rs[1])));

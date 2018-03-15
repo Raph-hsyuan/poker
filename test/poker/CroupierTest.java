@@ -1,11 +1,11 @@
 package poker;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static poker.Suit.*;
 
-//import java.io.ByteArrayInputStream;
-//import java.io.ByteArrayOutputStream;
-//import java.io.PrintStream;
+import java.util.ArrayList;
 
+import static poker.Rank.*;
 import org.junit.jupiter.api.Test;
 /**
  * @author Groupe A
@@ -13,34 +13,32 @@ import org.junit.jupiter.api.Test;
  */
 class CroupierTest {
 //	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	Croupier test=new Croupier();
+	Croupier croupier=new Croupier();
 	@Test
 	void testToRank() {
-		assertEquals(Rank.ACE,test.toRank("A"));
-		assertEquals(Rank.EIGHT,test.toRank("8"));
-		assertEquals(Rank.FIVE,test.toRank("5"));
+		assertEquals(ACE,croupier.toRank("A"));
+		assertEquals(EIGHT,croupier.toRank("8"));
+		assertEquals(FIVE,croupier.toRank("5"));
 	}
 	
 	@Test
 	void testToSuit() {
-		assertEquals(Suit.CLUB,test.toSuit("C"));
-		assertEquals(Suit.SPADE,test.toSuit("S"));
-		assertEquals(Suit.HEART,test.toSuit("H"));
+		assertEquals(CLUB,croupier.toSuit("C"));
+		assertEquals(SPADE,croupier.toSuit("S"));
+		assertEquals(HEART,croupier.toSuit("H"));
 	}
 	
-	
-//	/**
-//	 * With the help of StackOverFlow:
-//	 * https://stackoverflow.com/questions/1647907/
-//	 * junit-how-to-simulate-system-in-testing
-//	 */
-//	@Test
-//	void testStart(){
-//		System.setOut(new PrintStream(outContent));
-//		String data="2H 3D 5S 9C KD\n2C 3H 4S 8C AH\n";
-//		System.setIn(new ByteArrayInputStream(data.getBytes()));
-//		test.startGame();
-//		assertEquals("???????????",outContent.toString());
-//	}
+	@Test
+	void testToCard() {
+		ArrayList<Card> KS_AS_2C= new ArrayList<>();
+		KS_AS_2C.add(new Card(KING,SPADE));
+		KS_AS_2C.add(new Card(ACE,SPADE));
+		KS_AS_2C.add(new Card(TWO,CLUB));
+		String[] Ks_As_2c = { "KS", "AS", "2C" };
+		for(int i=0;i<3;i++) {
+		assertEquals(KS_AS_2C.get(i).getRank(),croupier.toCards(Ks_As_2c).get(i).getRank());
+		assertEquals(KS_AS_2C.get(i).getSuit(),croupier.toCards(Ks_As_2c).get(i).getSuit());
+		}
+	}
 
 }

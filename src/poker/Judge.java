@@ -55,7 +55,7 @@ class Judge {
 		scoreOfHand = fullDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
-		 scoreOfHand = colorDetector(hand.cards);
+		scoreOfHand = colorDetector(hand.cards);
 		 if (scoreOfHand != 0)
 		 return scoreOfHand;
 		scoreOfHand = suiteDetector(hand.cards);
