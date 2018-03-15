@@ -71,7 +71,10 @@ class Judge {
 		if (scoreOfHand != 0)
 			return scoreOfHand;
 		result = "High Card : " + hand.maxCard;
-		return hand.maxCard.shortValue();
+		int point = 0;
+		for (Card find : hand.cards)
+				point += find.longValue();
+		return point;
 	}
 
 	int paireDetector(ArrayList<Card> cards) {
@@ -227,9 +230,10 @@ class Judge {
 					point3 = find.getKey() * SBASEVALUE;
 			}
 			Rank[] myrank = Rank.values();
-			result = "Full :" + myrank[point3 / SBASEVALUE] + " over " + myrank[point2];
-			return point2 * point3 == 0 ? 
-					0 : FULLPOINT + point2 + point3;
+			if(point2*point3!=0) {
+			result = "Full :" + myrank[point3 / SBASEVALUE -2] + " over " + myrank[point2 -2];
+			return FULLPOINT + point2 + point3;
+			}
 		}
 		return 0;
 	}
