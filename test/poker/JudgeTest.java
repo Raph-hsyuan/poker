@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import hashmap.Card;
+
 import static poker.Rank.*;
 import static poker.Suit.*;
 
@@ -78,7 +81,8 @@ class JudgeTest {
 
     @Test
     void paire2D() {
-       
+        
+
     }
 
     @Test
@@ -136,6 +140,21 @@ class JudgeTest {
 
     @Test
     void testqfD() {
+
+    }
+
+    @Test
+    void testBrelan() {
+        ArrayList<Card> c2H_2C_2D_AH_KD = new ArrayList<>();
+        c2H_2C_2D_AH_KD = toCardList(TWO, HEART, TWO, CLUB, TWO, DIAMOND, ACE, HEART, KING, DIAMOND);
+        ArrayList<Card> c3C_3H_3S_AD_KC = new ArrayList<>();
+        c3C_3H_3S_AD_KC = toCardList(THREE, CLUB, THREE, HEART, THREE, SPADE, ACE, DIAMOND, KING, CLUB);
+        ArrayList<Card> cKC_KD_KH_3C_8D = new ArrayList<>();
+        cKC_KD_KH_3C_8D = toCardList(KING, CLUB, KING, DIAMOND, KING, HEART, THREE, CLUB, EIGHT, DIAMOND);
+        ArrayList<Card> cJD_JC_JS_AC_2H = new ArrayList<>();
+        cJD_JC_JS_AC_2H = toCardList(JACK, DIAMOND, JACK, CLUB, JACK, SPADE, ACE, CLUB, TWO, HEART);
+        assertTrue(testJudge.brelanDetector(c2H_2C_2D_AH_KD) < testJudge.brelanDetector(c3C_3H_3S_AD_KC));
+        assertTrue(testJudge.brelanDetector(cKC_KD_KH_3C_8D) > testJudge.brelanDetector(cJD_JC_JS_AC_2H));
 
     }
 
