@@ -13,7 +13,7 @@ import static poker.Suit.*;
 
 /**
  * @author Groupe A
- * @date 2018-3-14
+ * @date 2018-3-16
  */
 
 class JudgeTest {
@@ -51,7 +51,7 @@ class JudgeTest {
 
     @Test
     void testJudger() {
-
+        
     }
 
     @Test
@@ -81,6 +81,26 @@ class JudgeTest {
 
     @Test
     void paire2D() {
+        ArrayList<Card> cAS_AD_KH_KC_QC = new ArrayList<>();
+        cAS_AD_KH_KC_QC = toCardList(ACE, SPADE, ACE, DIAMOND, KING, HEART, KING, CLUB, QUEEN, CLUB);
+        ArrayList<Card> cAH_AC_KS_KD_QD = new ArrayList<>();
+        cAH_AC_KS_KD_QD = toCardList(ACE, HEART, ACE, CLUB, KING, SPADE, KING, DIAMOND, QUEEN, DIAMOND);
+        ArrayList<Card> cAS_AD_KH_KC_10H = new ArrayList<>();
+        cAS_AD_KH_KC_10H = toCardList(ACE, SPADE, ACE, DIAMOND, KING, HEART, KING, CLUB, TEN, HEART);
+        ArrayList<Card> cAH_AC_KS_KD_9H = new ArrayList<>();
+        cAH_AC_KS_KD_9H = toCardList(ACE, HEART, ACE, CLUB, KING, SPADE, KING, DIAMOND, NINE, HEART);
+        ArrayList<Card> c10S_10D_7H_7C_3H = new ArrayList<>();
+        c10S_10D_7H_7C_3H = toCardList(TEN, SPADE, TEN, DIAMOND, SEVEN, HEART, SEVEN, CLUB, THREE, HEART);
+        ArrayList<Card> c10H_10C_8D_8S_3D = new ArrayList<>();
+        c10H_10C_8D_8S_3D = toCardList(TEN, HEART, TEN, CLUB, EIGHT, DIAMOND, EIGHT, SPADE, THREE, DIAMOND);
+        ArrayList<Card> c6S_6D_2H_2C_AC = new ArrayList<>();
+        c6S_6D_2H_2C_AC = toCardList(SIX, SPADE, SIX, DIAMOND, TWO, HEART, TWO, CLUB, ACE, CLUB);
+        ArrayList<Card> c5C_5D_4C_4H_AH = new ArrayList<>();
+        c5C_5D_4C_4H_AH = toCardList(FIVE, CLUB, FIVE, DIAMOND, FOUR, CLUB, FOUR, HEART, ACE, HEART);
+        assertTrue(testJudge.paire2Detector(cAS_AD_KH_KC_QC) == testJudge.paire2Detector(cAH_AC_KS_KD_QD));
+        assertTrue(testJudge.paire2Detector(cAS_AD_KH_KC_10H) > testJudge.paire2Detector(cAH_AC_KS_KD_9H));
+        assertTrue(testJudge.paire2Detector(c10S_10D_7H_7C_3H) < testJudge.paire2Detector(c10H_10C_8D_8S_3D));
+        assertTrue(testJudge.paire2Detector(c6S_6D_2H_2C_AC) > testJudge.paire2Detector(c5C_5D_4C_4H_AH));
         
 
     }
