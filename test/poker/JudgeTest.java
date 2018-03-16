@@ -74,9 +74,9 @@ class JudgeTest {
 		ArrayList<Card> cJH_JS_KS_QH_3D = new ArrayList<>();
 		cJH_JS_KS_QH_3D = toCardList
 				(JACK,HEART,JACK,SPADE,KING,SPADE,QUEEN,HEART,THREE,DIAMOND);
-		assertTrue(testJudge.paireDetector(c9C_9D_KD_QS_JH)<testJudge.paireDetector(c9H_9S_KC_QD_JC));
-		assertTrue(testJudge.paireDetector(c9C_9D_10H_5H_4S)<testJudge.paireDetector(c9H_9S_10C_8H_4D));
-		assertTrue(testJudge.paireDetector(c8C_8D_KD_QS_3H)<testJudge.paireDetector(cJH_JS_KS_QH_3D));
+		assertTrue(testJudge.paireDetector(c9C_9D_KD_QS_JH) == testJudge.paireDetector(c9H_9S_KC_QD_JC));
+		assertTrue(testJudge.paireDetector(c9C_9D_10H_5H_4S) < testJudge.paireDetector(c9H_9S_10C_8H_4D));
+		assertTrue(testJudge.paireDetector(c8C_8D_KD_QS_3H) < testJudge.paireDetector(cJH_JS_KS_QH_3D));
 		
 		
 		
@@ -110,7 +110,27 @@ class JudgeTest {
 	
 	 @Test
 	 void testColorD() {
-
+        ArrayList<Card> cAC_10C_9C_7C_3C = new ArrayList<>();
+			cAC_10C_9C_7C_3C = toCardList
+					(ACE,CLUB,TEN,CLUB,NINE,CLUB,SEVEN,CLUB,THREE,CLUB);
+		ArrayList<Card> cAD_10D_9D_7D_3D = new ArrayList<>();
+			cAD_10D_9D_7D_3D = toCardList
+					(ACE,DIAMOND,TEN,DIAMOND,NINE,DIAMOND,SEVEN,DIAMOND,THREE,DIAMOND);
+		ArrayList<Card> cQC_JC_7C_4C_3C = new ArrayList<>();
+			cQC_JC_7C_4C_3C = toCardList
+					(QUEEN,CLUB,JACK,CLUB,SEVEN,CLUB,FOUR,CLUB,THREE,CLUB);
+		ArrayList<Card> cQD_10D_7D_4D_3D = new ArrayList<>();
+			cQD_10D_7D_4D_3D = toCardList
+					(QUEEN,DIAMOND,TEN,DIAMOND,SEVEN,DIAMOND,FOUR,DIAMOND,THREE,DIAMOND);
+		ArrayList<Card> cAS_9S_8S_4S_3S = new ArrayList<>();
+			cAS_9S_8S_4S_3S = toCardList
+					(ACE,SPADE,NINE,SPADE,EIGHT,SPADE,FOUR,SPADE,THREE,SPADE);
+		ArrayList<Card> cKH_JH_10H_7H_6H = new ArrayList<>();
+			cKH_JH_10H_7H_6H = toCardList
+					(KING,HEART,JACK,HEART,TEN,HEART,SEVEN,HEART,SIX,HEART);
+		assertTrue(testJudge.colorDetector(cAC_10C_9C_7C_3C) == testJudge.colorDetector(cAD_10D_9D_7D_3D));
+		assertTrue(testJudge.colorDetector(cQC_JC_7C_4C_3C) > testJudge.colorDetector(cQD_10D_7D_4D_3D));
+		assertTrue(testJudge.colorDetector(cAS_9S_8S_4S_3S) > testJudge.colorDetector(cKH_JH_10H_7H_6H));
 	 }
 	
 	 @Test
