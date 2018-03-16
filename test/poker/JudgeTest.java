@@ -105,7 +105,20 @@ class JudgeTest {
 	
 	 @Test
 	 void testfullD() {
-
+		ArrayList<Card> c3H_3D_3S_AD_AC = new ArrayList<>();
+			c3H_3D_3S_AD_AC = toCardList
+					(THREE,HEART,THREE,DIAMOND,THREE,SPADE,ACE,DIAMOND,ACE,CLUB);
+		ArrayList<Card> c4D_4S_4C_5D_5C = new ArrayList<>();
+			c4D_4S_4C_5D_5C = toCardList
+					(FOUR,DIAMOND,FOUR,CLUB,FOUR,CLUB,FIVE,DIAMOND,FIVE,CLUB);
+		ArrayList<Card> c7H_7D_7S_KD_KH = new ArrayList<>();
+			c7H_7D_7S_KD_KH = toCardList
+					(SEVEN,HEART,SEVEN,DIAMOND,SEVEN,SPADE,KING,DIAMOND,KING,HEART);
+		ArrayList<Card> cQH_QD_QS_KS_KC = new ArrayList<>();
+			cQH_QD_QS_KS_KC = toCardList
+					(QUEEN,HEART,QUEEN,DIAMOND,QUEEN,SPADE,KING,SPADE,KING,CLUB);
+		assertTrue(testJudge.fullDetector(c3H_3D_3S_AD_AC) < testJudge.fullDetector(c4D_4S_4C_5D_5C));
+		assertTrue(testJudge.fullDetector(c7H_7D_7S_KD_KH) < testJudge.fullDetector(cQH_QD_QS_KS_KC));
 	 }
 	
 	 @Test
