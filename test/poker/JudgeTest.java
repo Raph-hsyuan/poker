@@ -13,7 +13,7 @@ import static poker.Suit.*;
 
 /**
  * @author Groupe A
- * @date 2018-3-16
+ * @date 2018-3-14
  */
 
 class JudgeTest {
@@ -51,8 +51,28 @@ class JudgeTest {
 
     @Test
     void testJudger() {
+        ArrayList<Card> cAC_QD_8S_7S_3D = new ArrayList<>();
+        cAC_QD_8S_7S_3D = toCardList(ACE, CLUB, QUEEN, DIAMOND, EIGHT, SPADE, SEVEN, SPADE, THREE, DIAMOND);
+        ArrayList<Card> cAD_QS_8D_7C_3H = new ArrayList<>();
+        cAD_QS_8D_7C_3H = toCardList(ACE, DIAMOND, QUEEN, SPADE, EIGHT, DIAMOND, SEVEN, CLUB, THREE, HEART);
+        ArrayList<Card> cKS_QH_10D_5H_2S = new ArrayList<>();
+        cKS_QH_10D_5H_2S = toCardList(KING, SPADE, QUEEN, HEART, TEN, DIAMOND, FIVE, HEART, TWO, SPADE);
+        ArrayList<Card> cKD_QC_JH_9D_7H = new ArrayList<>();
+        cKD_QC_JH_9D_7H = toCardList(KING, DIAMOND, QUEEN, CLUB, JACK, HEART, NINE, DIAMOND, SEVEN, HEART);
+        Hand hAC_QD_8S_7S_3D = new Hand();
+        Hand hAD_QS_8D_7C_3H = new Hand();
+        Hand hKS_QH_10D_5H_2S = new Hand();
+        Hand hKD_QC_JH_9D_7H = new Hand();
+        hAC_QD_8S_7S_3D.drawCard(cAC_QD_8S_7S_3D);
+        hAD_QS_8D_7C_3H.drawCard(cAD_QS_8D_7C_3H);
+        hKS_QH_10D_5H_2S.drawCard(cKS_QH_10D_5H_2S);
+        hKD_QC_JH_9D_7H.drawCard(cKD_QC_JH_9D_7H);
+        assertEquals("tie",testJudge.judger(hAC_QD_8S_7S_3D,hAD_QS_8D_7C_3H));
+        assertEquals("player2 win! High Card : KD",testJudge.judger(hKS_QH_10D_5H_2S,hKD_QC_JH_9D_7H));
+        
         
     }
+    
 
     @Test
     void testPaireD() {
