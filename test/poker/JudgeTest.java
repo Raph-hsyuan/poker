@@ -67,8 +67,6 @@ class JudgeTest {
         hKD_QC_JH_9D_7H.drawCard(cKD_QC_JH_9D_7H);
         assertEquals("tie",testJudge.judger(hAC_QD_8S_7S_3D,hAD_QS_8D_7C_3H));
         assertEquals("player2 win! High Card : KD",testJudge.judger(hKS_QH_10D_5H_2S,hKD_QC_JH_9D_7H));
-        
-        
     }
     
 
@@ -89,7 +87,6 @@ class JudgeTest {
         assertTrue(testJudge.paireDetector(c9C_9D_KD_QS_JH) == testJudge.paireDetector(c9H_9S_KC_QD_JC));
         assertTrue(testJudge.paireDetector(c9C_9D_10H_5H_4S) < testJudge.paireDetector(c9H_9S_10C_8H_4D));
         assertTrue(testJudge.paireDetector(c8C_8D_KD_QS_3H) < testJudge.paireDetector(cJH_JS_KS_QH_3D));
-
     }
 
     @Test
@@ -104,7 +101,6 @@ class JudgeTest {
         cJD_JC_JS_AC_2H = toCardList(JACK, DIAMOND, JACK, CLUB, JACK, SPADE, ACE, CLUB, TWO, HEART);
         assertTrue(testJudge.brelanDetector(c2H_2C_2D_AH_KD) < testJudge.brelanDetector(c3C_3H_3S_AD_KC));
         assertTrue(testJudge.brelanDetector(cKC_KD_KH_3C_8D) > testJudge.brelanDetector(cJD_JC_JS_AC_2H));
-
     }
 
     @Test
@@ -129,8 +125,6 @@ class JudgeTest {
         assertTrue(testJudge.paire2Detector(cAS_AD_KH_KC_10H) > testJudge.paire2Detector(cAH_AC_KS_KD_9H));
         assertTrue(testJudge.paire2Detector(c10S_10D_7H_7C_3H) < testJudge.paire2Detector(c10H_10C_8D_8S_3D));
         assertTrue(testJudge.paire2Detector(c6S_6D_2H_2C_AC) > testJudge.paire2Detector(c5C_5D_4C_4H_AH));
-        
-
     }
 
     @Test
@@ -159,7 +153,6 @@ class JudgeTest {
         cQD_JS_10C_9C_8H = toCardList(QUEEN, DIAMOND, JACK, SPADE, TEN, CLUB, NINE, CLUB, EIGHT, HEART);
         assertTrue(testJudge.suiteDetector(cAS_KD_QC_JC_10S) == testJudge.suiteDetector(cAC_KH_QD_JS_10C));
         assertTrue(testJudge.suiteDetector(c8C_7D_6S_5D_4C) < testJudge.suiteDetector(cQD_JS_10C_9C_8H));
-
     }
 
     @Test
@@ -212,8 +205,6 @@ class JudgeTest {
         assertTrue(testJudge.qfDetector(cKC_QC_JC_10C_9C) == testJudge.qfDetector(cKS_QS_JS_10S_9S));
         assertTrue(testJudge.qfDetector(c10C_9C_8C_7C_6C) > testJudge.qfDetector(c8H_7H_6H_5H_4H));
         assertTrue(testJudge.qfDetector(c6H_5H_4H_3H_2H) < testJudge.qfDetector(cAD_KD_QD_JD_10D));
-
-
     }
 
 }
