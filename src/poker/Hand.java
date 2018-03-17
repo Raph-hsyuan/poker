@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 class Hand {
 	ArrayList<Card> cards = new ArrayList<>();
-	public static final Card MINICARD = new Card(Rank.TWO,Suit.CLUB);
+	public static final Card MINICARD = new Card(Rank.TWO,Suit.TREFLE);
 	private static final int HAND_LIMIT = 5;
 	Card maxCard;
 
@@ -16,7 +16,7 @@ class Hand {
 		maxCard = MINICARD;
 		this.cards.clear();
 		if (cards.size() != HAND_LIMIT)
-			throw new RuntimeException("The number of the cards is not valid");
+			throw new RuntimeException("Le nombre de carte n'est pas valide");
 		for (int i = 0; i < HAND_LIMIT; i++) {
 
 			this.cards.add(cards.get(i));
@@ -40,7 +40,7 @@ class Hand {
 	}
 
 	void printHand() {
-		System.out.print("HAND: ");
+		System.out.print("Le Main: ");
 		for (int i = 0; i < HAND_LIMIT; i++)
 			System.out.print(cards.get(i) + " ");
 	}

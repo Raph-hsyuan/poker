@@ -6,13 +6,14 @@ package poker;
  * To launch the game
  * 
  * Sample input:
- * Player1: 
- * 2H 3D 5S 9C KD  
- * Player2: 
- * 2C 3H 4S 8C AH
+ * 
+ * Main 1:  
+ * 2Tr 6Ca 3Ca 8Tr APi 
+ * Main 2:  
+ * 3Tr 6Pi 2Ca 8Co ACo 
  * 
  * Sample output:
- * player2 win! High Card : AH 
+ * Egalite 
  */
 public class Main {
 

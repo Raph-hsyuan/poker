@@ -23,21 +23,21 @@ class CroupierTest {
 	
 	@Test
 	void testToSuit() {
-		assertEquals(CLUB,croupier.toSuit("C"));
-		assertEquals(SPADE,croupier.toSuit("S"));
-		assertEquals(HEART,croupier.toSuit("H"));
+		assertEquals(TREFLE,croupier.toSuit("Tr"));
+		assertEquals(PIQUE,croupier.toSuit("Pi"));
+		assertEquals(COEUR,croupier.toSuit("Co"));
 	}
 	
 	@Test
 	void testToCard() {
-		ArrayList<Card> KS_AS_2C= new ArrayList<>();
-		KS_AS_2C.add(new Card(KING,SPADE));
-		KS_AS_2C.add(new Card(ACE,SPADE));
-		KS_AS_2C.add(new Card(TWO,CLUB));
-		String[] Ks_As_2c = { "KS", "AS", "2C" };
+		ArrayList<Card> cKPi_APi_2Tr= new ArrayList<>();
+		cKPi_APi_2Tr.add(new Card(ROI,PIQUE));
+		cKPi_APi_2Tr.add(new Card(ACE,PIQUE));
+		cKPi_APi_2Tr.add(new Card(TWO,TREFLE));
+		String[] nKPi_APi_2Tr = { "RPi", "APi", "2Tr" };
 		for(int i=0;i<3;i++) {
-		assertEquals(KS_AS_2C.get(i).getRank(),croupier.toCards(Ks_As_2c).get(i).getRank());
-		assertEquals(KS_AS_2C.get(i).getSuit(),croupier.toCards(Ks_As_2c).get(i).getSuit());
+		assertEquals(cKPi_APi_2Tr.get(i).getRank(),croupier.toCards(nKPi_APi_2Tr).get(i).getRank());
+		assertEquals(cKPi_APi_2Tr.get(i).getSuit(),croupier.toCards(nKPi_APi_2Tr).get(i).getSuit());
 		}
 	}
 

@@ -38,11 +38,11 @@ class Judge {
 
 	String judger(Hand hand1, Hand hand2) {
 		int point1 = this.toPoint(hand1);
-		String result1 = "player1 win! " + result;
+		String result1 = "La main 1 gagne avec " + result;
 		int point2 = this.toPoint(hand2);
-		String result2 = "player2 win! " + result;
+		String result2 = "La main 2 gagne avec " + result;
 		if (point1 == point2)
-			return "tie";
+			return "Egalite";
 		return point1 > point2 ? result1 : result2;
 	}
 
@@ -105,7 +105,7 @@ class Judge {
 			if (find.shortValue() != maxpaire)
 				point += find.longValue();
 			else
-				result = "Pair of " + find.getRank();
+				result = "paire de " + find.getRank();
 		return point;
 	}
 
@@ -131,7 +131,7 @@ class Judge {
 			if (find.shortValue() != brelan)
 				point += find.longValue();
 			else
-				result = "Brelan of " + find.getRank();
+				result = "brelan de " + find.getRank();
 		return point;
 	}
 
@@ -162,7 +162,7 @@ class Judge {
 			if (find.longValue() != paire1 && find.longValue() != paire2)
 				point += find.shortValue();
 		Rank[] myrank = Rank.values();
-		result = "Two Pair : " + myrank[(int) (Math.log(paire1) / Math.log(2))]
+		result = "deux Paire : " + myrank[(int) (Math.log(paire1) / Math.log(2))] + " et "
 				+ myrank[(int) (Math.log(paire2) / Math.log(2))];
 		return point;
 	}
@@ -189,7 +189,7 @@ class Judge {
 			if (find.shortValue() != carre)
 				point += find.longValue();
 			else
-				result = "Carre of " + find.getRank();
+				result = "carre de " + find.getRank();
 		return point;
 	}
 
@@ -206,7 +206,7 @@ class Judge {
 				return 0;
 		}
 		int max = cards.get(cards.size() - 1).shortValue();
-		result = "Suit of " + cards.get(cards.size() - 1).getRank();
+		result = "suit de " + cards.get(cards.size() - 1).getRank();
 		return SUITEPOINT + max;
 	}
 
@@ -232,7 +232,7 @@ class Judge {
 			}
 			Rank[] myrank = Rank.values();
 			if (point2 * point3 != 0) {
-				result = "Full : " + myrank[point3 / SBASEVALUE - 2] + " over " + myrank[point2 - 2];
+				result = "full : " + myrank[point3 / SBASEVALUE - 2] + " sur " + myrank[point2 - 2];
 				return FULLPOINT + point2 + point3;
 			}
 		}
@@ -261,7 +261,7 @@ class Judge {
 		}
 
 		int point = QFPOINT + suiteDetector(cards);
-		result = "Quinte Flush of " + max.getRank();
+		result = "Quinte Flush de " + max.getRank();
 		return point;
 	}
 

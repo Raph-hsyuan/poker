@@ -13,12 +13,12 @@ class CardTest {
 	@Test
 	void createAndTest() {
 
-		Card r5Card = new Card(Rank.FIVE,Suit.CLUB);
-		assertEquals(Rank.FIVE, r5Card.getRank());
-		assertTrue(r5Card.toString().equals("5C"));
-		Card r3Card = new Card(Rank.THREE,Suit.CLUB);
-		assertEquals(0, r5Card.compareWith(r5Card));
-		assertTrue(r5Card.compareWith(r3Card) > 0);
+		Card c5Tr = new Card(Rank.FIVE,Suit.TREFLE);
+		assertEquals(Rank.FIVE, c5Tr.getRank());
+		assertTrue(c5Tr.toString().equals("5Tr"));
+		Card r3Card = new Card(Rank.THREE,Suit.TREFLE);
+		assertEquals(0, c5Tr.compareWith(c5Tr));
+		assertTrue(c5Tr.compareWith(r3Card) > 0);
 
 	}
 }

@@ -51,147 +51,147 @@ class JudgeTest {
 
 	@Test
 	void testPaireD() {
-		ArrayList<Card> c9C_9D_KD_QS_JH = new ArrayList<>();
-		c9C_9D_KD_QS_JH = toCardList(NINE, CLUB, NINE, DIAMOND, KING, DIAMOND, QUEEN, SPADE, JACK, HEART);
-		ArrayList<Card> c9H_9S_KC_QD_JC = new ArrayList<>();
-		c9H_9S_KC_QD_JC = toCardList(NINE, HEART, NINE, SPADE, KING, CLUB, QUEEN, DIAMOND, JACK, CLUB);
-		ArrayList<Card> c9C_9D_10H_5H_4S = new ArrayList<>();
-		c9C_9D_10H_5H_4S = toCardList(NINE, CLUB, NINE, DIAMOND, TEN, HEART, FIVE, HEART, FOUR, SPADE);
-		ArrayList<Card> c9H_9S_10C_8H_4D = new ArrayList<>();
-		c9H_9S_10C_8H_4D = toCardList(NINE, HEART, NINE, SPADE, TEN, CLUB, EIGHT, HEART, FOUR, DIAMOND);
-		ArrayList<Card> c8C_8D_KD_QS_3H = new ArrayList<>();
-		c8C_8D_KD_QS_3H = toCardList(EIGHT, CLUB, EIGHT, DIAMOND, KING, DIAMOND, QUEEN, SPADE, THREE, HEART);
-		ArrayList<Card> cJH_JS_KS_QH_3D = new ArrayList<>();
-		cJH_JS_KS_QH_3D = toCardList(JACK, HEART, JACK, SPADE, KING, SPADE, QUEEN, HEART, THREE, DIAMOND);
+		ArrayList<Card> c9Tr_9Ca_RCa_DPi_VCo = new ArrayList<>();
+		c9Tr_9Ca_RCa_DPi_VCo = toCardList(NINE, TREFLE, NINE, CARREAU, ROI, CARREAU, DAME, PIQUE, VALET, COEUR);
+		ArrayList<Card> c9Co_9Pi_RTr_DCa_VTr = new ArrayList<>();
+		c9Co_9Pi_RTr_DCa_VTr = toCardList(NINE, COEUR, NINE, PIQUE, ROI, TREFLE, DAME, CARREAU, VALET, TREFLE);
+		ArrayList<Card> c9Tr_9Ca_10Co_5Co_4Pi = new ArrayList<>();
+		c9Tr_9Ca_10Co_5Co_4Pi = toCardList(NINE, TREFLE, NINE, CARREAU, TEN, COEUR, FIVE, COEUR, FOUR, PIQUE);
+		ArrayList<Card> c9Co_9Pi_10Tr_8Co_4Ca = new ArrayList<>();
+		c9Co_9Pi_10Tr_8Co_4Ca = toCardList(NINE, COEUR, NINE, PIQUE, TEN, TREFLE, EIGHT, COEUR, FOUR, CARREAU);
+		ArrayList<Card> c8Tr_8Ca_RCa_DPi_3Co = new ArrayList<>();
+		c8Tr_8Ca_RCa_DPi_3Co = toCardList(EIGHT, TREFLE, EIGHT, CARREAU, ROI, CARREAU, DAME, PIQUE, THREE, COEUR);
+		ArrayList<Card> cVCo_VPi_RPi_DCo_3Ca = new ArrayList<>();
+		cVCo_VPi_RPi_DCo_3Ca = toCardList(VALET, COEUR, VALET, PIQUE, ROI, PIQUE, DAME, COEUR, THREE, CARREAU);
 
-		assertTrue(testJudge.paireDetector(c9C_9D_KD_QS_JH) == testJudge.paireDetector(c9H_9S_KC_QD_JC));
-		assertTrue(testJudge.paireDetector(c9C_9D_10H_5H_4S) < testJudge.paireDetector(c9H_9S_10C_8H_4D));
-		assertTrue(testJudge.paireDetector(c8C_8D_KD_QS_3H) < testJudge.paireDetector(cJH_JS_KS_QH_3D));
+		assertTrue(testJudge.paireDetector(c9Tr_9Ca_RCa_DPi_VCo) == testJudge.paireDetector(c9Co_9Pi_RTr_DCa_VTr));
+		assertTrue(testJudge.paireDetector(c9Tr_9Ca_10Co_5Co_4Pi) < testJudge.paireDetector(c9Co_9Pi_10Tr_8Co_4Ca));
+		assertTrue(testJudge.paireDetector(c8Tr_8Ca_RCa_DPi_3Co) < testJudge.paireDetector(cVCo_VPi_RPi_DCo_3Ca));
 	}
 
 	@Test
 	void testBrelanD() {
-		ArrayList<Card> c2H_2C_2D_AH_KD = new ArrayList<>();
-		c2H_2C_2D_AH_KD = toCardList(TWO, HEART, TWO, CLUB, TWO, DIAMOND, ACE, HEART, KING, DIAMOND);
-		ArrayList<Card> c3C_3H_3S_AD_KC = new ArrayList<>();
-		c3C_3H_3S_AD_KC = toCardList(THREE, CLUB, THREE, HEART, THREE, SPADE, ACE, DIAMOND, KING, CLUB);
-		ArrayList<Card> cKC_KD_KH_3C_8D = new ArrayList<>();
-		cKC_KD_KH_3C_8D = toCardList(KING, CLUB, KING, DIAMOND, KING, HEART, THREE, CLUB, EIGHT, DIAMOND);
-		ArrayList<Card> cJD_JC_JS_AC_2H = new ArrayList<>();
-		cJD_JC_JS_AC_2H = toCardList(JACK, DIAMOND, JACK, CLUB, JACK, SPADE, ACE, CLUB, TWO, HEART);
+		ArrayList<Card> c2Co_2Tr_2Ca_ACo_RCa = new ArrayList<>();
+		c2Co_2Tr_2Ca_ACo_RCa = toCardList(TWO, COEUR, TWO, TREFLE, TWO, CARREAU, ACE, COEUR, ROI, CARREAU);
+		ArrayList<Card> c3Tr_3Co_3Pi_ACa_RTr = new ArrayList<>();
+		c3Tr_3Co_3Pi_ACa_RTr = toCardList(THREE, TREFLE, THREE, COEUR, THREE, PIQUE, ACE, CARREAU, ROI, TREFLE);
+		ArrayList<Card> cRTr_RCa_RCo_3Tr_8Ca = new ArrayList<>();
+		cRTr_RCa_RCo_3Tr_8Ca = toCardList(ROI, TREFLE, ROI, CARREAU, ROI, COEUR, THREE, TREFLE, EIGHT, CARREAU);
+		ArrayList<Card> cVCa_VTr_VPi_ATr_2Co = new ArrayList<>();
+		cVCa_VTr_VPi_ATr_2Co = toCardList(VALET, CARREAU, VALET, TREFLE, VALET, PIQUE, ACE, TREFLE, TWO, COEUR);
 
-		assertTrue(testJudge.brelanDetector(c2H_2C_2D_AH_KD) < testJudge.brelanDetector(c3C_3H_3S_AD_KC));
-		assertTrue(testJudge.brelanDetector(cKC_KD_KH_3C_8D) > testJudge.brelanDetector(cJD_JC_JS_AC_2H));
+		assertTrue(testJudge.brelanDetector(c2Co_2Tr_2Ca_ACo_RCa) < testJudge.brelanDetector(c3Tr_3Co_3Pi_ACa_RTr));
+		assertTrue(testJudge.brelanDetector(cRTr_RCa_RCo_3Tr_8Ca) > testJudge.brelanDetector(cVCa_VTr_VPi_ATr_2Co));
 	}
 
 	@Test
 	void testPaire2D() {
-		ArrayList<Card> cAS_AD_KH_KC_QC = new ArrayList<>();
-		cAS_AD_KH_KC_QC = toCardList(ACE, SPADE, ACE, DIAMOND, KING, HEART, KING, CLUB, QUEEN, CLUB);
-		ArrayList<Card> cAH_AC_KS_KD_QD = new ArrayList<>();
-		cAH_AC_KS_KD_QD = toCardList(ACE, HEART, ACE, CLUB, KING, SPADE, KING, DIAMOND, QUEEN, DIAMOND);
-		ArrayList<Card> cAS_AD_KH_KC_10H = new ArrayList<>();
-		cAS_AD_KH_KC_10H = toCardList(ACE, SPADE, ACE, DIAMOND, KING, HEART, KING, CLUB, TEN, HEART);
-		ArrayList<Card> cAH_AC_KS_KD_9H = new ArrayList<>();
-		cAH_AC_KS_KD_9H = toCardList(ACE, HEART, ACE, CLUB, KING, SPADE, KING, DIAMOND, NINE, HEART);
-		ArrayList<Card> c10S_10D_7H_7C_3H = new ArrayList<>();
-		c10S_10D_7H_7C_3H = toCardList(TEN, SPADE, TEN, DIAMOND, SEVEN, HEART, SEVEN, CLUB, THREE, HEART);
-		ArrayList<Card> c10H_10C_8D_8S_3D = new ArrayList<>();
-		c10H_10C_8D_8S_3D = toCardList(TEN, HEART, TEN, CLUB, EIGHT, DIAMOND, EIGHT, SPADE, THREE, DIAMOND);
-		ArrayList<Card> c6S_6D_2H_2C_AC = new ArrayList<>();
-		c6S_6D_2H_2C_AC = toCardList(SIX, SPADE, SIX, DIAMOND, TWO, HEART, TWO, CLUB, ACE, CLUB);
-		ArrayList<Card> c5C_5D_4C_4H_AH = new ArrayList<>();
-		c5C_5D_4C_4H_AH = toCardList(FIVE, CLUB, FIVE, DIAMOND, FOUR, CLUB, FOUR, HEART, ACE, HEART);
+		ArrayList<Card> cAPi_ACa_RCo_RTr_DTr = new ArrayList<>();
+		cAPi_ACa_RCo_RTr_DTr = toCardList(ACE, PIQUE, ACE, CARREAU, ROI, COEUR, ROI, TREFLE, DAME, TREFLE);
+		ArrayList<Card> cACo_ATr_RPi_RCa_DCa = new ArrayList<>();
+		cACo_ATr_RPi_RCa_DCa = toCardList(ACE, COEUR, ACE, TREFLE, ROI, PIQUE, ROI, CARREAU, DAME, CARREAU);
+		ArrayList<Card> cAPi_ACa_RCo_RTr_10Co = new ArrayList<>();
+		cAPi_ACa_RCo_RTr_10Co = toCardList(ACE, PIQUE, ACE, CARREAU, ROI, COEUR, ROI, TREFLE, TEN, COEUR);
+		ArrayList<Card> cACo_ATr_RPi_RCa_9Co = new ArrayList<>();
+		cACo_ATr_RPi_RCa_9Co = toCardList(ACE, COEUR, ACE, TREFLE, ROI, PIQUE, ROI, CARREAU, NINE, COEUR);
+		ArrayList<Card> c10Pi_10Ca_7Co_7Tr_3Co = new ArrayList<>();
+		c10Pi_10Ca_7Co_7Tr_3Co = toCardList(TEN, PIQUE, TEN, CARREAU, SEVEN, COEUR, SEVEN, TREFLE, THREE, COEUR);
+		ArrayList<Card> c10Co_10Tr_8Ca_8Pi_3Ca = new ArrayList<>();
+		c10Co_10Tr_8Ca_8Pi_3Ca = toCardList(TEN, COEUR, TEN, TREFLE, EIGHT, CARREAU, EIGHT, PIQUE, THREE, CARREAU);
+		ArrayList<Card> c6Pi_6Ca_2Co_2Tr_ATr = new ArrayList<>();
+		c6Pi_6Ca_2Co_2Tr_ATr = toCardList(SIX, PIQUE, SIX, CARREAU, TWO, COEUR, TWO, TREFLE, ACE, TREFLE);
+		ArrayList<Card> c5Tr_5Ca_4Tr_4Co_ACo = new ArrayList<>();
+		c5Tr_5Ca_4Tr_4Co_ACo = toCardList(FIVE, TREFLE, FIVE, CARREAU, FOUR, TREFLE, FOUR, COEUR, ACE, COEUR);
 
-		assertTrue(testJudge.paire2Detector(cAS_AD_KH_KC_QC) == testJudge.paire2Detector(cAH_AC_KS_KD_QD));
-		assertTrue(testJudge.paire2Detector(cAS_AD_KH_KC_10H) > testJudge.paire2Detector(cAH_AC_KS_KD_9H));
-		assertTrue(testJudge.paire2Detector(c10S_10D_7H_7C_3H) < testJudge.paire2Detector(c10H_10C_8D_8S_3D));
-		assertTrue(testJudge.paire2Detector(c6S_6D_2H_2C_AC) > testJudge.paire2Detector(c5C_5D_4C_4H_AH));
+		assertTrue(testJudge.paire2Detector(cAPi_ACa_RCo_RTr_DTr) == testJudge.paire2Detector(cACo_ATr_RPi_RCa_DCa));
+		assertTrue(testJudge.paire2Detector(cAPi_ACa_RCo_RTr_10Co) > testJudge.paire2Detector(cACo_ATr_RPi_RCa_9Co));
+		assertTrue(testJudge.paire2Detector(c10Pi_10Ca_7Co_7Tr_3Co) < testJudge.paire2Detector(c10Co_10Tr_8Ca_8Pi_3Ca));
+		assertTrue(testJudge.paire2Detector(c6Pi_6Ca_2Co_2Tr_ATr) > testJudge.paire2Detector(c5Tr_5Ca_4Tr_4Co_ACo));
 	}
 
 	@Test
 	void testCarreD() {
-		ArrayList<Card> c8C_8D_8H_8S_10C = new ArrayList<>();
-		c8C_8D_8H_8S_10C = toCardList(EIGHT, CLUB, EIGHT, DIAMOND, EIGHT, HEART, EIGHT, SPADE, TEN, CLUB);
-		ArrayList<Card> c7C_7D_7H_7S_10D = new ArrayList<>();
-		c8C_8D_8H_8S_10C = toCardList(SEVEN, CLUB, SEVEN, DIAMOND, SEVEN, HEART, SEVEN, SPADE, TEN, DIAMOND);
-		ArrayList<Card> cAC_AD_AH_AS_3C = new ArrayList<>();
-		cAC_AD_AH_AS_3C = toCardList(ACE, CLUB, ACE, DIAMOND, ACE, HEART, ACE, SPADE, THREE, CLUB);
-		ArrayList<Card> c2C_2D_2H_2S_KC = new ArrayList<>();
-		c2C_2D_2H_2S_KC = toCardList(TWO, CLUB, TWO, DIAMOND, TWO, HEART, TWO, SPADE, KING, CLUB);
+		ArrayList<Card> c8Tr_8Ca_8Co_8Pi_10Tr = new ArrayList<>();
+		c8Tr_8Ca_8Co_8Pi_10Tr = toCardList(EIGHT, TREFLE, EIGHT, CARREAU, EIGHT, COEUR, EIGHT, PIQUE, TEN, TREFLE);
+		ArrayList<Card> c7Tr_7Ca_7Co_7Pi_10Ca = new ArrayList<>();
+		c7Tr_7Ca_7Co_7Pi_10Ca = toCardList(SEVEN, TREFLE, SEVEN, CARREAU, SEVEN, COEUR, SEVEN, PIQUE, TEN, CARREAU);
+		ArrayList<Card> cATr_ACa_ACo_APi_3Tr = new ArrayList<>();
+		cATr_ACa_ACo_APi_3Tr = toCardList(ACE, TREFLE, ACE, CARREAU, ACE, COEUR, ACE, PIQUE, THREE, TREFLE);
+		ArrayList<Card> c2Tr_2Ca_2Co_2Pi_RTr = new ArrayList<>();
+		c2Tr_2Ca_2Co_2Pi_RTr = toCardList(TWO, TREFLE, TWO, CARREAU, TWO, COEUR, TWO, PIQUE, ROI, TREFLE);
 
-		assertTrue(testJudge.carreDetector(c8C_8D_8H_8S_10C) > testJudge.carreDetector(c7C_7D_7H_7S_10D));
-		assertTrue(testJudge.carreDetector(cAC_AD_AH_AS_3C) > testJudge.carreDetector(c2C_2D_2H_2S_KC));
+		assertTrue(testJudge.carreDetector(c8Tr_8Ca_8Co_8Pi_10Tr) > testJudge.carreDetector(c7Tr_7Ca_7Co_7Pi_10Ca));
+		assertTrue(testJudge.carreDetector(cATr_ACa_ACo_APi_3Tr) > testJudge.carreDetector(c2Tr_2Ca_2Co_2Pi_RTr));
 	}
 
 	@Test
 	void testSuiteD() {
-		ArrayList<Card> cAS_KD_QC_JC_10S = new ArrayList<>();
-		cAS_KD_QC_JC_10S = toCardList(ACE, SPADE, KING, DIAMOND, QUEEN, CLUB, JACK, CLUB, TEN, SPADE);
-		ArrayList<Card> cAC_KH_QD_JS_10C = new ArrayList<>();
-		cAC_KH_QD_JS_10C = toCardList(ACE, CLUB, KING, HEART, QUEEN, DIAMOND, JACK, SPADE, TEN, CLUB);
-		ArrayList<Card> c8C_7D_6S_5D_4C = new ArrayList<>();
-		c8C_7D_6S_5D_4C = toCardList(EIGHT, CLUB, SEVEN, DIAMOND, SIX, SPADE, FIVE, DIAMOND, FOUR, CLUB);
-		ArrayList<Card> cQD_JS_10C_9C_8H = new ArrayList<>();
-		cQD_JS_10C_9C_8H = toCardList(QUEEN, DIAMOND, JACK, SPADE, TEN, CLUB, NINE, CLUB, EIGHT, HEART);
+		ArrayList<Card> cAPi_RCa_DTr_VTr_10Pi = new ArrayList<>();
+		cAPi_RCa_DTr_VTr_10Pi = toCardList(ACE, PIQUE, ROI, CARREAU, DAME, TREFLE, VALET, TREFLE, TEN, PIQUE);
+		ArrayList<Card> cATr_RCo_DCa_VPi_10Tr = new ArrayList<>();
+		cATr_RCo_DCa_VPi_10Tr = toCardList(ACE, TREFLE, ROI, COEUR, DAME, CARREAU, VALET, PIQUE, TEN, TREFLE);
+		ArrayList<Card> c8Tr_7Ca_6Pi_5Ca_4Tr = new ArrayList<>();
+		c8Tr_7Ca_6Pi_5Ca_4Tr = toCardList(EIGHT, TREFLE, SEVEN, CARREAU, SIX, PIQUE, FIVE, CARREAU, FOUR, TREFLE);
+		ArrayList<Card> cQCa_JPi_10Tr_9Tr_8Co = new ArrayList<>();
+		cQCa_JPi_10Tr_9Tr_8Co = toCardList(DAME, CARREAU, VALET, PIQUE, TEN, TREFLE, NINE, TREFLE, EIGHT, COEUR);
 
-		assertTrue(testJudge.suiteDetector(cAS_KD_QC_JC_10S) == testJudge.suiteDetector(cAC_KH_QD_JS_10C));
-		assertTrue(testJudge.suiteDetector(c8C_7D_6S_5D_4C) < testJudge.suiteDetector(cQD_JS_10C_9C_8H));
+		assertTrue(testJudge.suiteDetector(cAPi_RCa_DTr_VTr_10Pi) == testJudge.suiteDetector(cATr_RCo_DCa_VPi_10Tr));
+		assertTrue(testJudge.suiteDetector(c8Tr_7Ca_6Pi_5Ca_4Tr) < testJudge.suiteDetector(cQCa_JPi_10Tr_9Tr_8Co));
 	}
 
 	@Test
 	void testfullD() {
-		ArrayList<Card> c3H_3D_3S_AD_AC = new ArrayList<>();
-		c3H_3D_3S_AD_AC = toCardList(THREE, HEART, THREE, DIAMOND, THREE, SPADE, ACE, DIAMOND, ACE, CLUB);
-		ArrayList<Card> c4D_4S_4C_5D_5C = new ArrayList<>();
-		c4D_4S_4C_5D_5C = toCardList(FOUR, DIAMOND, FOUR, CLUB, FOUR, CLUB, FIVE, DIAMOND, FIVE, CLUB);
-		ArrayList<Card> c7H_7D_7S_KD_KH = new ArrayList<>();
-		c7H_7D_7S_KD_KH = toCardList(SEVEN, HEART, SEVEN, DIAMOND, SEVEN, SPADE, KING, DIAMOND, KING, HEART);
-		ArrayList<Card> cQH_QD_QS_KS_KC = new ArrayList<>();
-		cQH_QD_QS_KS_KC = toCardList(QUEEN, HEART, QUEEN, DIAMOND, QUEEN, SPADE, KING, SPADE, KING, CLUB);
+		ArrayList<Card> c3Co_3Ca_3Pi_ACa_ATr = new ArrayList<>();
+		c3Co_3Ca_3Pi_ACa_ATr = toCardList(THREE, COEUR, THREE, CARREAU, THREE, PIQUE, ACE, CARREAU, ACE, TREFLE);
+		ArrayList<Card> c4Ca_4Tr_4Tr_5Ca_5Tr = new ArrayList<>();
+		c4Ca_4Tr_4Tr_5Ca_5Tr = toCardList(FOUR, CARREAU, FOUR, TREFLE, FOUR, TREFLE, FIVE, CARREAU, FIVE, TREFLE);
+		ArrayList<Card> c7Co_7Ca_7Pi_RCa_RCo = new ArrayList<>();
+		c7Co_7Ca_7Pi_RCa_RCo = toCardList(SEVEN, COEUR, SEVEN, CARREAU, SEVEN, PIQUE, ROI, CARREAU, ROI, COEUR);
+		ArrayList<Card> cDCo_DCa_DPi_RPi_RTr = new ArrayList<>();
+		cDCo_DCa_DPi_RPi_RTr = toCardList(DAME, COEUR, DAME, CARREAU, DAME, PIQUE, ROI, PIQUE, ROI, TREFLE);
 
-		assertTrue(testJudge.fullDetector(c3H_3D_3S_AD_AC) < testJudge.fullDetector(c4D_4S_4C_5D_5C));
-		assertTrue(testJudge.fullDetector(c7H_7D_7S_KD_KH) < testJudge.fullDetector(cQH_QD_QS_KS_KC));
+		assertTrue(testJudge.fullDetector(c3Co_3Ca_3Pi_ACa_ATr) < testJudge.fullDetector(c4Ca_4Tr_4Tr_5Ca_5Tr));
+		assertTrue(testJudge.fullDetector(c7Co_7Ca_7Pi_RCa_RCo) < testJudge.fullDetector(cDCo_DCa_DPi_RPi_RTr));
 	}
 
 	@Test
 	void testColorD() {
-		ArrayList<Card> cAC_10C_9C_7C_3C = new ArrayList<>();
-		cAC_10C_9C_7C_3C = toCardList(ACE, CLUB, TEN, CLUB, NINE, CLUB, SEVEN, CLUB, THREE, CLUB);
-		ArrayList<Card> cAD_10D_9D_7D_3D = new ArrayList<>();
-		cAD_10D_9D_7D_3D = toCardList(ACE, DIAMOND, TEN, DIAMOND, NINE, DIAMOND, SEVEN, DIAMOND, THREE, DIAMOND);
-		ArrayList<Card> cQC_JC_7C_4C_3C = new ArrayList<>();
-		cQC_JC_7C_4C_3C = toCardList(QUEEN, CLUB, JACK, CLUB, SEVEN, CLUB, FOUR, CLUB, THREE, CLUB);
-		ArrayList<Card> cQD_10D_7D_4D_3D = new ArrayList<>();
-		cQD_10D_7D_4D_3D = toCardList(QUEEN, DIAMOND, TEN, DIAMOND, SEVEN, DIAMOND, FOUR, DIAMOND, THREE, DIAMOND);
-		ArrayList<Card> cAS_9S_8S_4S_3S = new ArrayList<>();
-		cAS_9S_8S_4S_3S = toCardList(ACE, SPADE, NINE, SPADE, EIGHT, SPADE, FOUR, SPADE, THREE, SPADE);
-		ArrayList<Card> cKH_JH_10H_7H_6H = new ArrayList<>();
-		cKH_JH_10H_7H_6H = toCardList(KING, HEART, JACK, HEART, TEN, HEART, SEVEN, HEART, SIX, HEART);
+		ArrayList<Card> cATr_10Tr_9Tr_7Tr_3Tr = new ArrayList<>();
+		cATr_10Tr_9Tr_7Tr_3Tr = toCardList(ACE, TREFLE, TEN, TREFLE, NINE, TREFLE, SEVEN, TREFLE, THREE, TREFLE);
+		ArrayList<Card> cACa_10Ca_9Ca_7Ca_3Ca = new ArrayList<>();
+		cACa_10Ca_9Ca_7Ca_3Ca = toCardList(ACE, CARREAU, TEN, CARREAU, NINE, CARREAU, SEVEN, CARREAU, THREE, CARREAU);
+		ArrayList<Card> cDTr_VTr_7Tr_4Tr_3Tr = new ArrayList<>();
+		cDTr_VTr_7Tr_4Tr_3Tr = toCardList(DAME, TREFLE, VALET, TREFLE, SEVEN, TREFLE, FOUR, TREFLE, THREE, TREFLE);
+		ArrayList<Card> cDCa_10Ca_7Ca_4Ca_3Ca = new ArrayList<>();
+		cDCa_10Ca_7Ca_4Ca_3Ca = toCardList(DAME, CARREAU, TEN, CARREAU, SEVEN, CARREAU, FOUR, CARREAU, THREE, CARREAU);
+		ArrayList<Card> cAPi_9Pi_8Pi_4Pi_3Pi = new ArrayList<>();
+		cAPi_9Pi_8Pi_4Pi_3Pi = toCardList(ACE, PIQUE, NINE, PIQUE, EIGHT, PIQUE, FOUR, PIQUE, THREE, PIQUE);
+		ArrayList<Card> cRCo_VCo_10Co_7Co_6Co = new ArrayList<>();
+		cRCo_VCo_10Co_7Co_6Co = toCardList(ROI, COEUR, VALET, COEUR, TEN, COEUR, SEVEN, COEUR, SIX, COEUR);
 
-		assertTrue(testJudge.colorDetector(cAC_10C_9C_7C_3C) == testJudge.colorDetector(cAD_10D_9D_7D_3D));
-		assertTrue(testJudge.colorDetector(cQC_JC_7C_4C_3C) > testJudge.colorDetector(cQD_10D_7D_4D_3D));
-		assertTrue(testJudge.colorDetector(cAS_9S_8S_4S_3S) > testJudge.colorDetector(cKH_JH_10H_7H_6H));
+		assertTrue(testJudge.colorDetector(cATr_10Tr_9Tr_7Tr_3Tr) == testJudge.colorDetector(cACa_10Ca_9Ca_7Ca_3Ca));
+		assertTrue(testJudge.colorDetector(cDTr_VTr_7Tr_4Tr_3Tr) > testJudge.colorDetector(cDCa_10Ca_7Ca_4Ca_3Ca));
+		assertTrue(testJudge.colorDetector(cAPi_9Pi_8Pi_4Pi_3Pi) > testJudge.colorDetector(cRCo_VCo_10Co_7Co_6Co));
 	}
 
 	@Test
 	void testqfD() {
-		ArrayList<Card> cKC_QC_JC_10C_9C = new ArrayList<>();
-		cKC_QC_JC_10C_9C = toCardList(KING, CLUB, QUEEN, CLUB, JACK, CLUB, TEN, CLUB, NINE, CLUB);
-		ArrayList<Card> cKS_QS_JS_10S_9S = new ArrayList<>();
-		cKS_QS_JS_10S_9S = toCardList(KING, SPADE, QUEEN, SPADE, JACK, SPADE, TEN, SPADE, NINE, SPADE);
-		ArrayList<Card> c10C_9C_8C_7C_6C = new ArrayList<>();
-		c10C_9C_8C_7C_6C = toCardList(TEN, CLUB, NINE, CLUB, EIGHT, CLUB, SEVEN, CLUB, SIX, CLUB);
-		ArrayList<Card> c8H_7H_6H_5H_4H = new ArrayList<>();
-		c8H_7H_6H_5H_4H = toCardList(EIGHT, HEART, SEVEN, HEART, SIX, HEART, FIVE, HEART, FOUR, HEART);
-		ArrayList<Card> c6H_5H_4H_3H_2H = new ArrayList<>();
-		c6H_5H_4H_3H_2H = toCardList(SIX, HEART, FIVE, HEART, FOUR, HEART, THREE, HEART, TWO, HEART);
-		ArrayList<Card> cAD_KD_QD_JD_10D = new ArrayList<>();
-		cAD_KD_QD_JD_10D = toCardList(ACE, DIAMOND, KING, DIAMOND, QUEEN, DIAMOND, JACK, DIAMOND, TEN, DIAMOND);
+		ArrayList<Card> cRTr_DTr_VTr_10Tr_9Tr = new ArrayList<>();
+		cRTr_DTr_VTr_10Tr_9Tr = toCardList(ROI, TREFLE, DAME, TREFLE, VALET, TREFLE, TEN, TREFLE, NINE, TREFLE);
+		ArrayList<Card> cRPi_DPi_VPi_10Pi_9Pi = new ArrayList<>();
+		cRPi_DPi_VPi_10Pi_9Pi = toCardList(ROI, PIQUE, DAME, PIQUE, VALET, PIQUE, TEN, PIQUE, NINE, PIQUE);
+		ArrayList<Card> c10Tr_9Tr_8Tr_7Tr_6Tr = new ArrayList<>();
+		c10Tr_9Tr_8Tr_7Tr_6Tr = toCardList(TEN, TREFLE, NINE, TREFLE, EIGHT, TREFLE, SEVEN, TREFLE, SIX, TREFLE);
+		ArrayList<Card> c8Co_7Co_6Co_5Co_4Co = new ArrayList<>();
+		c8Co_7Co_6Co_5Co_4Co = toCardList(EIGHT, COEUR, SEVEN, COEUR, SIX, COEUR, FIVE, COEUR, FOUR, COEUR);
+		ArrayList<Card> c6Co_5Co_4Co_3Co_2Co = new ArrayList<>();
+		c6Co_5Co_4Co_3Co_2Co = toCardList(SIX, COEUR, FIVE, COEUR, FOUR, COEUR, THREE, COEUR, TWO, COEUR);
+		ArrayList<Card> cACa_RCa_DCa_VCa_10Ca = new ArrayList<>();
+		cACa_RCa_DCa_VCa_10Ca = toCardList(ACE, CARREAU, ROI, CARREAU, DAME, CARREAU, VALET, CARREAU, TEN, CARREAU);
 
-		assertTrue(testJudge.qfDetector(cKC_QC_JC_10C_9C) == testJudge.qfDetector(cKS_QS_JS_10S_9S));
-		assertTrue(testJudge.qfDetector(c10C_9C_8C_7C_6C) > testJudge.qfDetector(c8H_7H_6H_5H_4H));
-		assertTrue(testJudge.qfDetector(c6H_5H_4H_3H_2H) < testJudge.qfDetector(cAD_KD_QD_JD_10D));
+		assertTrue(testJudge.qfDetector(cRTr_DTr_VTr_10Tr_9Tr) == testJudge.qfDetector(cRPi_DPi_VPi_10Pi_9Pi));
+		assertTrue(testJudge.qfDetector(c10Tr_9Tr_8Tr_7Tr_6Tr) > testJudge.qfDetector(c8Co_7Co_6Co_5Co_4Co));
+		assertTrue(testJudge.qfDetector(c6Co_5Co_4Co_3Co_2Co) < testJudge.qfDetector(cACa_RCa_DCa_VCa_10Ca));
 	}
 
 	/**
@@ -199,66 +199,66 @@ class JudgeTest {
 	 */
 	@Test
 	void testJudger() {
-		ArrayList<Card> cAC_QD_8S_7S_3D = new ArrayList<>();
-		cAC_QD_8S_7S_3D = toCardList(ACE, CLUB, QUEEN, DIAMOND, EIGHT, SPADE, SEVEN, SPADE, THREE, DIAMOND);
-		ArrayList<Card> cAD_QS_8D_7C_3H = new ArrayList<>();
-		cAD_QS_8D_7C_3H = toCardList(ACE, DIAMOND, QUEEN, SPADE, EIGHT, DIAMOND, SEVEN, CLUB, THREE, HEART);
-		ArrayList<Card> cKS_QH_10D_5H_2S = new ArrayList<>();
-		cKS_QH_10D_5H_2S = toCardList(KING, SPADE, QUEEN, HEART, TEN, DIAMOND, FIVE, HEART, TWO, SPADE);
-		ArrayList<Card> cKD_QC_JH_9D_7H = new ArrayList<>();
-		cKD_QC_JH_9D_7H = toCardList(KING, DIAMOND, QUEEN, CLUB, JACK, HEART, NINE, DIAMOND, SEVEN, HEART);
-		ArrayList<Card> c9C_9D_KD_QS_JH = new ArrayList<>();
-		c9C_9D_KD_QS_JH = toCardList(NINE, CLUB, NINE, DIAMOND, KING, DIAMOND, QUEEN, SPADE, JACK, HEART);
-		ArrayList<Card> c2H_2C_2D_AH_KD = new ArrayList<>();
-		c2H_2C_2D_AH_KD = toCardList(TWO, HEART, TWO, CLUB, TWO, DIAMOND, ACE, HEART, KING, DIAMOND);
-		ArrayList<Card> cAS_AD_KH_KC_QC = new ArrayList<>();
-		cAS_AD_KH_KC_QC = toCardList(ACE, SPADE, ACE, DIAMOND, KING, HEART, KING, CLUB, QUEEN, CLUB);
-		ArrayList<Card> c8C_7D_6S_5D_4C = new ArrayList<>();
-		c8C_7D_6S_5D_4C = toCardList(EIGHT, CLUB, SEVEN, DIAMOND, SIX, SPADE, FIVE, DIAMOND, FOUR, CLUB);
-		ArrayList<Card> cAC_10C_9C_7C_3C = new ArrayList<>();
-		cAC_10C_9C_7C_3C = toCardList(ACE, CLUB, TEN, CLUB, NINE, CLUB, SEVEN, CLUB, THREE, CLUB);
-		ArrayList<Card> c3H_3D_3S_AD_AC = new ArrayList<>();
-		c3H_3D_3S_AD_AC = toCardList(THREE, HEART, THREE, DIAMOND, THREE, SPADE, ACE, DIAMOND, ACE, CLUB);
-		ArrayList<Card> c8C_8D_8H_8S_10C = new ArrayList<>();
-		c8C_8D_8H_8S_10C = toCardList(EIGHT, CLUB, EIGHT, DIAMOND, EIGHT, HEART, EIGHT, SPADE, TEN, CLUB);
-		ArrayList<Card> c6H_5H_4H_3H_2H = new ArrayList<>();
-		c6H_5H_4H_3H_2H = toCardList(SIX, HEART, FIVE, HEART, FOUR, HEART, THREE, HEART, TWO, HEART);
+		ArrayList<Card> cATr_DCa_8Pi_7Pi_3Ca = new ArrayList<>();
+		cATr_DCa_8Pi_7Pi_3Ca = toCardList(ACE, TREFLE, DAME, CARREAU, EIGHT, PIQUE, SEVEN, PIQUE, THREE, CARREAU);
+		ArrayList<Card> cACa_DPi_8Ca_7Tr_3Co = new ArrayList<>();
+		cACa_DPi_8Ca_7Tr_3Co = toCardList(ACE, CARREAU, DAME, PIQUE, EIGHT, CARREAU, SEVEN, TREFLE, THREE, COEUR);
+		ArrayList<Card> cRPi_DCo_10Ca_5Co_2Pi = new ArrayList<>();
+		cRPi_DCo_10Ca_5Co_2Pi = toCardList(ROI, PIQUE, DAME, COEUR, TEN, CARREAU, FIVE, COEUR, TWO, PIQUE);
+		ArrayList<Card> cRCa_DTr_VCo_9Ca_7Co = new ArrayList<>();
+		cRCa_DTr_VCo_9Ca_7Co = toCardList(ROI, CARREAU, DAME, TREFLE, VALET, COEUR, NINE, CARREAU, SEVEN, COEUR);
+		ArrayList<Card> c9Tr_9Ca_RCa_DPi_VCo = new ArrayList<>();
+		c9Tr_9Ca_RCa_DPi_VCo = toCardList(NINE, TREFLE, NINE, CARREAU, ROI, CARREAU, DAME, PIQUE, VALET, COEUR);
+		ArrayList<Card> c2Co_2Tr_2Ca_ACo_RCa = new ArrayList<>();
+		c2Co_2Tr_2Ca_ACo_RCa = toCardList(TWO, COEUR, TWO, TREFLE, TWO, CARREAU, ACE, COEUR, ROI, CARREAU);
+		ArrayList<Card> cAPi_ACa_RCo_RTr_DTr = new ArrayList<>();
+		cAPi_ACa_RCo_RTr_DTr = toCardList(ACE, PIQUE, ACE, CARREAU, ROI, COEUR, ROI, TREFLE, DAME, TREFLE);
+		ArrayList<Card> c8Tr_7Ca_6Pi_5Ca_4Tr = new ArrayList<>();
+		c8Tr_7Ca_6Pi_5Ca_4Tr = toCardList(EIGHT, TREFLE, SEVEN, CARREAU, SIX, PIQUE, FIVE, CARREAU, FOUR, TREFLE);
+		ArrayList<Card> cATr_10Tr_9Tr_7Tr_3Tr = new ArrayList<>();
+		cATr_10Tr_9Tr_7Tr_3Tr = toCardList(ACE, TREFLE, TEN, TREFLE, NINE, TREFLE, SEVEN, TREFLE, THREE, TREFLE);
+		ArrayList<Card> c3Co_3Ca_3Pi_ACa_ATr = new ArrayList<>();
+		c3Co_3Ca_3Pi_ACa_ATr = toCardList(THREE, COEUR, THREE, CARREAU, THREE, PIQUE, ACE, CARREAU, ACE, TREFLE);
+		ArrayList<Card> c8Tr_8Ca_8Co_8Pi_10Tr = new ArrayList<>();
+		c8Tr_8Ca_8Co_8Pi_10Tr = toCardList(EIGHT, TREFLE, EIGHT, CARREAU, EIGHT, COEUR, EIGHT, PIQUE, TEN, TREFLE);
+		ArrayList<Card> c6Co_5Co_4Co_3Co_2Co = new ArrayList<>();
+		c6Co_5Co_4Co_3Co_2Co = toCardList(SIX, COEUR, FIVE, COEUR, FOUR, COEUR, THREE, COEUR, TWO, COEUR);
 
-		Hand hAC_QD_8S_7S_3D = new Hand();
-		Hand hAD_QS_8D_7C_3H = new Hand();
-		Hand hKS_QH_10D_5H_2S = new Hand();
-		Hand hKD_QC_JH_9D_7H = new Hand();
-		Hand h9C_9D_KD_QS_JH = new Hand();
-		Hand h2H_2C_2D_AH_KD = new Hand();
-		Hand hAS_AD_KH_KC_QC = new Hand();
-		Hand h8C_7D_6S_5D_4C = new Hand();
-		Hand hAC_10C_9C_7C_3C = new Hand();
-		Hand h3H_3D_3S_AD_AC = new Hand();
-		Hand h8C_8D_8H_8S_10C = new Hand();
-		Hand h6H_5H_4H_3H_2H = new Hand();
+		Hand hATr_DCa_8Pi_7Pi_3Ca = new Hand();
+		Hand hACa_DPi_8Ca_7Tr_3Co = new Hand();
+		Hand hRPi_DCo_10Ca_5Co_2Pi = new Hand();
+		Hand hRCa_DTr_VCo_9Ca_7Co = new Hand();
+		Hand h9Tr_9Ca_RCa_DPi_VCo = new Hand();
+		Hand h2Co_2Tr_2Ca_ACo_RCa = new Hand();
+		Hand hAPi_ACa_RCo_RTr_DTr = new Hand();
+		Hand h8Tr_7Ca_6Pi_5Ca_4Tr = new Hand();
+		Hand hATr_10Tr_9Tr_7Tr_3Tr = new Hand();
+		Hand h3Co_3Ca_3Pi_ACa_ATr = new Hand();
+		Hand h8Tr_8Ca_8Co_8Pi_10Tr = new Hand();
+		Hand h6Co_5Co_4Co_3Co_2Co = new Hand();
 
-		hAC_QD_8S_7S_3D.drawCard(cAC_QD_8S_7S_3D);// same1
-		hAD_QS_8D_7C_3H.drawCard(cAD_QS_8D_7C_3H);// same2
-		hKS_QH_10D_5H_2S.drawCard(cKS_QH_10D_5H_2S);// high card
-		hKD_QC_JH_9D_7H.drawCard(cKD_QC_JH_9D_7H);// high card
-		h9C_9D_KD_QS_JH.drawCard(c9C_9D_KD_QS_JH);// 1 pair
-		h2H_2C_2D_AH_KD.drawCard(c2H_2C_2D_AH_KD);// brelan
-		hAS_AD_KH_KC_QC.drawCard(cAS_AD_KH_KC_QC);// 2 pair
-		h8C_7D_6S_5D_4C.drawCard(c8C_7D_6S_5D_4C);// suit8
-		hAC_10C_9C_7C_3C.drawCard(cAC_10C_9C_7C_3C);// couleur
-		h3H_3D_3S_AD_AC.drawCard(c3H_3D_3S_AD_AC);// full
-		h8C_8D_8H_8S_10C.drawCard(c8C_8D_8H_8S_10C);// Carre
-		h6H_5H_4H_3H_2H.drawCard(c6H_5H_4H_3H_2H);// QF
+		hATr_DCa_8Pi_7Pi_3Ca.drawCard(cATr_DCa_8Pi_7Pi_3Ca);// same1
+		hACa_DPi_8Ca_7Tr_3Co.drawCard(cACa_DPi_8Ca_7Tr_3Co);// same2
+		hRPi_DCo_10Ca_5Co_2Pi.drawCard(cRPi_DCo_10Ca_5Co_2Pi);// high card
+		hRCa_DTr_VCo_9Ca_7Co.drawCard(cRCa_DTr_VCo_9Ca_7Co);// high card
+		h9Tr_9Ca_RCa_DPi_VCo.drawCard(c9Tr_9Ca_RCa_DPi_VCo);// 1 pair
+		h2Co_2Tr_2Ca_ACo_RCa.drawCard(c2Co_2Tr_2Ca_ACo_RCa);// brelan
+		hAPi_ACa_RCo_RTr_DTr.drawCard(cAPi_ACa_RCo_RTr_DTr);// 2 pair
+		h8Tr_7Ca_6Pi_5Ca_4Tr.drawCard(c8Tr_7Ca_6Pi_5Ca_4Tr);// suit8
+		hATr_10Tr_9Tr_7Tr_3Tr.drawCard(cATr_10Tr_9Tr_7Tr_3Tr);// couleur
+		h3Co_3Ca_3Pi_ACa_ATr.drawCard(c3Co_3Ca_3Pi_ACa_ATr);// full
+		h8Tr_8Ca_8Co_8Pi_10Tr.drawCard(c8Tr_8Ca_8Co_8Pi_10Tr);// Carre
+		h6Co_5Co_4Co_3Co_2Co.drawCard(c6Co_5Co_4Co_3Co_2Co);// QF
 
-		assertEquals("tie", testJudge.judger(hAC_QD_8S_7S_3D, hAD_QS_8D_7C_3H));// tie
-		assertEquals("player2 win! High Card : KD", testJudge.judger(hKS_QH_10D_5H_2S, hKD_QC_JH_9D_7H));// High
-		assertEquals("player2 win! Two Pair : KA", testJudge.judger(h9C_9D_KD_QS_JH, hAS_AD_KH_KC_QC));// 2Pair>Pair
-		assertEquals("player2 win! Brelan of 2", testJudge.judger(hAS_AD_KH_KC_QC, h2H_2C_2D_AH_KD));// Brelan>2Pair
-		assertEquals("player2 win! Suit of 8", testJudge.judger(hAS_AD_KH_KC_QC, h8C_7D_6S_5D_4C));// Suit>Brelan
-		assertEquals("player2 win! Couleur", testJudge.judger(h8C_7D_6S_5D_4C, hAC_10C_9C_7C_3C));// Couleur>Suit
-		assertEquals("player1 win! Full : 3 over A", testJudge.judger(h3H_3D_3S_AD_AC, hAC_10C_9C_7C_3C));// Carre>Full
-		assertEquals("player2 win! Carre of 8", testJudge.judger(h3H_3D_3S_AD_AC, h8C_8D_8H_8S_10C));// Carre>Full
-		assertEquals("player1 win! Quinte Flush of 6", testJudge.judger(h6H_5H_4H_3H_2H, h8C_8D_8H_8S_10C));// QF>Carre
+		assertEquals("Egalite", testJudge.judger(hATr_DCa_8Pi_7Pi_3Ca, hACa_DPi_8Ca_7Tr_3Co));// tie
+		assertEquals("La main 2 gagne avec High Card : RCa", testJudge.judger(hRPi_DCo_10Ca_5Co_2Pi, hRCa_DTr_VCo_9Ca_7Co));// High
+		assertEquals("La main 2 gagne avec deux Paire : R et A", testJudge.judger(h9Tr_9Ca_RCa_DPi_VCo, hAPi_ACa_RCo_RTr_DTr));// 2Pair>Pair
+		assertEquals("La main 2 gagne avec brelan de 2", testJudge.judger(hAPi_ACa_RCo_RTr_DTr, h2Co_2Tr_2Ca_ACo_RCa));// Brelan>2Pair
+		assertEquals("La main 2 gagne avec suit de 8", testJudge.judger(hAPi_ACa_RCo_RTr_DTr, h8Tr_7Ca_6Pi_5Ca_4Tr));// Suit>Brelan
+		assertEquals("La main 2 gagne avec Couleur", testJudge.judger(h8Tr_7Ca_6Pi_5Ca_4Tr, hATr_10Tr_9Tr_7Tr_3Tr));// Couleur>Suit
+		assertEquals("La main 1 gagne avec full : 3 sur A", testJudge.judger(h3Co_3Ca_3Pi_ACa_ATr, hATr_10Tr_9Tr_7Tr_3Tr));// Carre>Full
+		assertEquals("La main 2 gagne avec carre de 8", testJudge.judger(h3Co_3Ca_3Pi_ACa_ATr, h8Tr_8Ca_8Co_8Pi_10Tr));// Carre>Full
+		assertEquals("La main 1 gagne avec Quinte Flush de 6", testJudge.judger(h6Co_5Co_4Co_3Co_2Co, h8Tr_8Ca_8Co_8Pi_10Tr));// QF>Carre
 	}
 
 }

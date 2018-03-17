@@ -16,9 +16,9 @@ public class Croupier {
 	Hand p2Hand=new Hand();
 	Judge myJudge=new Judge();
 	void startGame() {
-		System.out.println("Player1: ");
+		System.out.println("Main 1: ");
 		player1.addAll(toCards(this.check()));
-		System.out.println("Player2: ");
+		System.out.println("Main 2: ");
 		player2.addAll(toCards(this.check()));
 		cardReader.close();
 		p1Hand.drawCard(player1);
@@ -35,7 +35,10 @@ public class Croupier {
 	ArrayList<Card> toCards(String[] allCard) {
 		ArrayList<Card> handCard = new ArrayList<>();
 		for (String card : allCard) {
-			String[] rs = card.split("");
+			String[] old = card.split("");
+			String[] rs = new String[5];
+			rs[0]=old[0];
+			rs[1]=old[1]+old[2];
 			handCard.add(new Card(this.toRank(rs[0]), this.toSuit(rs[1])));
 		}
 		return handCard;
@@ -61,12 +64,12 @@ public class Croupier {
 			return Rank.NINE;
 		case "10":
 			return Rank.TEN;
-		case "J":
-			return Rank.JACK;
-		case "Q":
-			return Rank.QUEEN;
-		case "K":
-			return Rank.KING;
+		case "V":
+			return Rank.VALET;
+		case "D":
+			return Rank.DAME;
+		case "R":
+			return Rank.ROI;
 		case "A":
 			return Rank.ACE;
 		default:
@@ -76,14 +79,14 @@ public class Croupier {
 
 	Suit toSuit(String name) {
 		switch (name) {
-		case "C":
-			return Suit.CLUB;
-		case "S":
-			return Suit.SPADE;
-		case "H":
-			return Suit.HEART;
-		case "D":
-			return Suit.DIAMOND;
+		case "Tr":
+			return Suit.TREFLE;
+		case "Pi":
+			return Suit.PIQUE;
+		case "Co":
+			return Suit.COEUR;
+		case "Ca":
+			return Suit.CARREAU;
 		default:
 			throw new RuntimeException("The Suit "+name+" is not valid");
 		}

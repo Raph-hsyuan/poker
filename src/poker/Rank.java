@@ -7,7 +7,7 @@ package poker;
 enum Rank {
 	TWO("2", 1), THREE("3", 2), FOUR("4", 4), FIVE("5", 8), SIX("6", 16), 
 	SEVEN("7", 32), EIGHT("8", 64), NINE("9",128), TEN("10", 256), 
-	JACK("J", 512), QUEEN("Q", 1024), KING("K", 2048), ACE("A", 4096);
+	VALET("V", 512), DAME("D", 1024), ROI("R", 2048), ACE("A", 4096);
 	
 	private String name;
 	private int value;

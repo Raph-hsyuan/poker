@@ -5,7 +5,7 @@ package poker;
  * @date 2018-3-10
  */
 public enum Suit {
-	CLUB("C"), DIAMOND("D"), HEART("H"), SPADE("S");
+	TREFLE("Tr"), CARREAU("Ca"), COEUR("Co"), PIQUE("Pi");
 	private String name;
 
 	Suit(String name) {
