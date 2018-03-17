@@ -197,6 +197,22 @@ class JudgeTest {
 
     @Test
     void testqfD() {
+    	ArrayList<Card> cKC_QC_JC_10C_9C = new ArrayList<>();
+        cKC_QC_JC_10C_9C = toCardList(KING, CLUB, QUEEN, CLUB, JACK, CLUB, TEN, CLUB, NINE, CLUB);
+        ArrayList<Card> cKS_QS_JS_10S_9S = new ArrayList<>();
+        cKS_QS_JS_10S_9S = toCardList(KING, SPADE, QUEEN, SPADE, JACK, SPADE, TEN, SPADE, NINE, SPADE);
+        ArrayList<Card> c10C_9C_8C_7C_6C = new ArrayList<>();
+        c10C_9C_8C_7C_6C = toCardList(TEN, CLUB, NINE, CLUB, EIGHT, CLUB, SEVEN, CLUB, SIX, CLUB);
+        ArrayList<Card> c8H_7H_6H_5H_4H = new ArrayList<>();
+        c8H_7H_6H_5H_4H = toCardList(EIGHT, HEART, SEVEN, HEART, SIX, HEART, FIVE, HEART, FOUR, HEART);
+        ArrayList<Card> c6H_5H_4H_3H_2H = new ArrayList<>();
+        c6H_5H_4H_3H_2H = toCardList(SIX, HEART, FIVE, HEART, FOUR, HEART, THREE, HEART, TWO, HEART);
+        ArrayList<Card> cAD_KD_QD_JD_10D = new ArrayList<>();
+        cAD_KD_QD_JD_10D = toCardList(ACE, DIAMOND, KING, DIAMOND, QUEEN, DIAMOND, JACK, DIAMOND, TEN, DIAMOND);
+        assertTrue(testJudge.qfDetector(cKC_QC_JC_10C_9C) == testJudge.qfDetector(cKS_QS_JS_10S_9S));
+        assertTrue(testJudge.qfDetector(c10C_9C_8C_7C_6C) > testJudge.qfDetector(c8H_7H_6H_5H_4H));
+        assertTrue(testJudge.qfDetector(c6H_5H_4H_3H_2H) < testJudge.qfDetector(cAD_KD_QD_JD_10D));
+
 
     }
 
