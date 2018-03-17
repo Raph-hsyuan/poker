@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 class Hand {
 	ArrayList<Card> cards = new ArrayList<>();
-	private static final Card MINICARD = new Card(Rank.TWO,Suit.CLUB);
+	public static final Card MINICARD = new Card(Rank.TWO,Suit.CLUB);
 	private static final int HAND_LIMIT = 5;
 	Card maxCard;
 

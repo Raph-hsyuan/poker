@@ -16,9 +16,9 @@ public class Croupier {
 	Hand p2Hand=new Hand();
 	Judge myJudge=new Judge();
 	void startGame() {
-		System.out.printf("Player1: ");
+		System.out.println("Player1: ");
 		player1.addAll(toCards(this.check()));
-		System.out.printf("Player2: ");
+		System.out.println("Player2: ");
 		player2.addAll(toCards(this.check()));
 		cardReader.close();
 		p1Hand.drawCard(player1);

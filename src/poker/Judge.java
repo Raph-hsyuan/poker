@@ -4,7 +4,8 @@ import java.util.*;
 
 /**
  * @author Groupe A
- * @date 2018-3-14
+ * @date 2018-3-17
+ * A class who has methods to detect all kind of hand type
  */
 class Judge {
 
@@ -15,10 +16,10 @@ class Judge {
 	public static final int PAIRE2POINT = 2000000;// yes
 	public static final int BRELANPOINT = 3000000;// yes
 	public static final int SUITEPOINT = 4000000;// yes
-	public static final int COULEURPOINT = 5000000;//yes
+	public static final int COULEURPOINT = 5000000;// yes
 	public static final int FULLPOINT = 6000000;// yes
 	public static final int CARREPOINT = 7000000;// yes
-	public static final int QFPOINT = 4000000;//yes
+	public static final int QFPOINT = 4000000;// yes
 
 	/**
 	 * Base of the value of card JJJKA: Point =
@@ -46,9 +47,9 @@ class Judge {
 	}
 
 	int toPoint(Hand hand) {
-		 scoreOfHand = qfDetector(hand.cards);
-		 if (scoreOfHand != 0)
-		 return scoreOfHand;
+		scoreOfHand = qfDetector(hand.cards);
+		if (scoreOfHand != 0)
+			return scoreOfHand;
 		scoreOfHand = carreDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
@@ -56,8 +57,8 @@ class Judge {
 		if (scoreOfHand != 0)
 			return scoreOfHand;
 		scoreOfHand = colorDetector(hand.cards);
-		 if (scoreOfHand != 0)
-		 return scoreOfHand;
+		if (scoreOfHand != 0)
+			return scoreOfHand;
 		scoreOfHand = suiteDetector(hand.cards);
 		if (scoreOfHand != 0)
 			return scoreOfHand;
@@ -73,7 +74,7 @@ class Judge {
 		result = "High Card : " + hand.maxCard;
 		int point = 0;
 		for (Card find : hand.cards)
-				point += find.longValue();
+			point += find.longValue();
 		return point;
 	}
 
@@ -161,7 +162,7 @@ class Judge {
 			if (find.longValue() != paire1 && find.longValue() != paire2)
 				point += find.shortValue();
 		Rank[] myrank = Rank.values();
-		result = "Two Pair: " + myrank[(int) (Math.log(paire1) / Math.log(2))]
+		result = "Two Pair : " + myrank[(int) (Math.log(paire1) / Math.log(2))]
 				+ myrank[(int) (Math.log(paire2) / Math.log(2))];
 		return point;
 	}
@@ -230,9 +231,9 @@ class Judge {
 					point3 = find.getKey() * SBASEVALUE;
 			}
 			Rank[] myrank = Rank.values();
-			if(point2*point3!=0) {
-			result = "Full :" + myrank[point3 / SBASEVALUE -2] + " over " + myrank[point2 -2];
-			return FULLPOINT + point2 + point3;
+			if (point2 * point3 != 0) {
+				result = "Full : " + myrank[point3 / SBASEVALUE - 2] + " over " + myrank[point2 - 2];
+				return FULLPOINT + point2 + point3;
 			}
 		}
 		return 0;
@@ -246,12 +247,22 @@ class Judge {
 				return 0;
 			point += card.longValue();
 		}
+		result = "Couleur";
 		return point + COULEURPOINT;
 	}
 
 	int qfDetector(ArrayList<Card> cards) {
-		return colorDetector(cards) * suiteDetector(cards) == 0 ?
-				0 : QFPOINT + suiteDetector(cards);
+		if (colorDetector(cards) * suiteDetector(cards) == 0)
+			return 0;
+		Card max = Hand.MINICARD;
+		for (Card find : cards) {
+			if (find.compareWith(max) > 0)
+				max = find;
+		}
+
+		int point = QFPOINT + suiteDetector(cards);
+		result = "Quinte Flush of " + max.getRank();
+		return point;
 	}
 
 }

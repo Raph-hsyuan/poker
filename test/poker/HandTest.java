@@ -1,11 +1,10 @@
 package poker;
 
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import org.junit.Test;
 
 /**
  * @author Groupe A
@@ -14,77 +13,103 @@ import org.junit.Test;
 public class HandTest {
 
 	Hand hand = new Hand();
-	Card card2 = new Card(Rank.TWO,Suit.CLUB);
-	Card card5 = new Card(Rank.FIVE,Suit.CLUB);
-	Card card4 = new Card(Rank.FOUR,Suit.CLUB);
-	Card card11 = new Card(Rank.JACK,Suit.CLUB);
+	Card cTWO_CLUB = new Card(Rank.TWO,Suit.CLUB);
+	Card cFIVE_CLUB = new Card(Rank.FIVE,Suit.CLUB);
+	Card cFOUR_CLUB = new Card(Rank.FOUR,Suit.CLUB);
+	Card cJACK_CLUB = new Card(Rank.JACK,Suit.CLUB);
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-	@Test(expected = java.lang.RuntimeException.class)
-	public void test1WrongDraw3() {
-		ArrayList<Card> deck3 = new ArrayList<Card>();
-		deck3.add(card2);
-		deck3.add(card5);
-		deck3.add(card4);
-		deck3.add(card5);
-		hand.drawCard(deck3);
+	@Test
+	public void test1WrongDraw3() throws RuntimeException{
+		ArrayList<Card> fourCards = new ArrayList<Card>();
+		fourCards.add(cTWO_CLUB);
+		fourCards.add(cFIVE_CLUB);
+		fourCards.add(cFOUR_CLUB);
+		fourCards.add(cFIVE_CLUB);
+	    Throwable t = null;
+	    try{
+			hand.drawCard(fourCards);
+	    }catch(Exception ex){
+	        t = ex;
+	    }
+	        
+	    assertNotNull(t);
+	    assertTrue(t instanceof RuntimeException);
+	    assertTrue(t.getMessage().contains("The number of the cards is not valid"));
+
 	}
 
-	@Test(expected = java.lang.RuntimeException.class)
-	public void test1WrongDraw1() {
-		ArrayList<Card> deck1 = new ArrayList<Card>();
-		deck1.add(card2);
-		deck1.add(card2);
-		deck1.add(card2);
-		deck1.add(card2);
-		deck1.add(card2);
-		deck1.add(card5);
-		hand.drawCard(deck1);
+	@Test
+	public void test1WrongDraw1() throws RuntimeException{
+		ArrayList<Card> sixCards = new ArrayList<Card>();
+		sixCards.add(cTWO_CLUB);
+		sixCards.add(cTWO_CLUB);
+		sixCards.add(cTWO_CLUB);
+		sixCards.add(cTWO_CLUB);
+		sixCards.add(cTWO_CLUB);
+		sixCards.add(cFIVE_CLUB);
+	    Throwable t = null;
+	    try{
+			hand.drawCard(sixCards);
+	    }catch(Exception ex){
+	        t = ex;
+	    }        
+	    assertNotNull(t);
+	    assertTrue(t instanceof RuntimeException);
+	    assertTrue(t.getMessage().contains("The number of the cards is not valid"));
 	}
 
-	@Test(expected = java.lang.RuntimeException.class)
-	public void test1WrongDraw2() {
-		ArrayList<Card> deck2 = new ArrayList<Card>();
-		hand.drawCard(deck2);
+	@Test
+	public void test1WrongDraw2() throws RuntimeException {
+		ArrayList<Card> noCard = new ArrayList<Card>();
+		Throwable t = null;
+	    try{
+			hand.drawCard(noCard);
+	    }catch(Exception ex){
+	        t = ex;
+	    }        
+	    assertNotNull(t);
+	    assertTrue(t instanceof RuntimeException);
+	    assertTrue(t.getMessage().contains("The number of the cards is not valid"));
 	}
 
 	@Test
 	public void test1RightDraw() {
 		System.setOut(new PrintStream(outContent));
-		ArrayList<Card> deck3 = new ArrayList<Card>();
+		ArrayList<Card> c2C_5C_JC_JC_2C = new ArrayList<Card>();
 		String expected = "HAND: 2C 5C JC JC 2C ";
-		deck3.add(card2);
-		deck3.add(card5);
-		deck3.add(card11);
-		deck3.add(card11);
-		deck3.add(card2);
-		hand.drawCard(deck3);
-		assertEquals(deck3.get(0), hand.getCard().get(0));
-		assertEquals(deck3.get(1), hand.getCard().get(1));
-		assertEquals(deck3.get(2), hand.getCard().get(2));
+		c2C_5C_JC_JC_2C.add(cTWO_CLUB);
+		c2C_5C_JC_JC_2C.add(cFIVE_CLUB);
+		c2C_5C_JC_JC_2C.add(cJACK_CLUB);
+		c2C_5C_JC_JC_2C.add(cJACK_CLUB);
+		c2C_5C_JC_JC_2C.add(cTWO_CLUB);
+		hand.drawCard(c2C_5C_JC_JC_2C);
+		assertEquals(c2C_5C_JC_JC_2C.get(0), hand.getCard().get(0));
+		assertEquals(c2C_5C_JC_JC_2C.get(1), hand.getCard().get(1));
+		assertEquals(c2C_5C_JC_JC_2C.get(2), hand.getCard().get(2));
 		hand.printHand();
 		assertEquals(expected, outContent.toString());
 	}
 
 	@Test
 	public void testCompareto() {
-		ArrayList<Card> deckTest1 = new ArrayList<Card>();
-		deckTest1.add(card5);
-		deckTest1.add(card5);
-		deckTest1.add(card4);
-		deckTest1.add(card11);
-		deckTest1.add(card11);
-		hand.drawCard(deckTest1);
-		assertEquals(card11, hand.maxCard);
+		ArrayList<Card> c5C_5C_4C_JC_JC = new ArrayList<Card>();
+		c5C_5C_4C_JC_JC.add(cFIVE_CLUB);
+		c5C_5C_4C_JC_JC.add(cFIVE_CLUB);
+		c5C_5C_4C_JC_JC.add(cFOUR_CLUB);
+		c5C_5C_4C_JC_JC.add(cJACK_CLUB);
+		c5C_5C_4C_JC_JC.add(cJACK_CLUB);
+		hand.drawCard(c5C_5C_4C_JC_JC);
+		assertEquals(cJACK_CLUB, hand.maxCard);
 
-		ArrayList<Card> deckTest2 = new ArrayList<Card>();// encore une fois
-		deckTest2.add(card2);
-		deckTest2.add(card4);
-		deckTest2.add(card5);
-		deckTest2.add(card5);
-		deckTest2.add(card2);
-		hand.drawCard(deckTest2);
-		assertEquals(card5, hand.maxCard);
+		ArrayList<Card> c2C_4C_5C_5C_2C = new ArrayList<Card>();// encore une fois
+		c2C_4C_5C_5C_2C.add(cTWO_CLUB);
+		c2C_4C_5C_5C_2C.add(cFOUR_CLUB);
+		c2C_4C_5C_5C_2C.add(cFIVE_CLUB);
+		c2C_4C_5C_5C_2C.add(cFIVE_CLUB);
+		c2C_4C_5C_5C_2C.add(cTWO_CLUB);
+		hand.drawCard(c2C_4C_5C_5C_2C);
+		assertEquals(cFIVE_CLUB, hand.maxCard);
 
 	}
 
