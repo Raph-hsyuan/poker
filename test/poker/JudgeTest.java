@@ -6,8 +6,6 @@ import java.util.HashMap;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import hashmap.Card;
-
 import static poker.Rank.*;
 import static poker.Suit.*;
 
@@ -95,7 +93,17 @@ class JudgeTest {
     }
 
     @Test
-    void testBrelanPaireD() {
+    void testBrelanD() {
+        ArrayList<Card> c2H_2C_2D_AH_KD = new ArrayList<>();
+        c2H_2C_2D_AH_KD = toCardList(TWO, HEART, TWO, CLUB, TWO, DIAMOND, ACE, HEART, KING, DIAMOND);
+        ArrayList<Card> c3C_3H_3S_AD_KC = new ArrayList<>();
+        c3C_3H_3S_AD_KC = toCardList(THREE, CLUB, THREE, HEART, THREE, SPADE, ACE, DIAMOND, KING, CLUB);
+        ArrayList<Card> cKC_KD_KH_3C_8D = new ArrayList<>();
+        cKC_KD_KH_3C_8D = toCardList(KING, CLUB, KING, DIAMOND, KING, HEART, THREE, CLUB, EIGHT, DIAMOND);
+        ArrayList<Card> cJD_JC_JS_AC_2H = new ArrayList<>();
+        cJD_JC_JS_AC_2H = toCardList(JACK, DIAMOND, JACK, CLUB, JACK, SPADE, ACE, CLUB, TWO, HEART);
+        assertTrue(testJudge.brelanDetector(c2H_2C_2D_AH_KD) < testJudge.brelanDetector(c3C_3H_3S_AD_KC));
+        assertTrue(testJudge.brelanDetector(cKC_KD_KH_3C_8D) > testJudge.brelanDetector(cJD_JC_JS_AC_2H));
 
     }
 
@@ -127,7 +135,16 @@ class JudgeTest {
 
     @Test
     void testCarreD() {
-
+    	ArrayList<Card> c8C_8D_8H_8S_10C = new ArrayList<>();
+        c8C_8D_8H_8S_10C = toCardList(EIGHT, CLUB, EIGHT, DIAMOND, EIGHT, HEART, EIGHT, SPADE, TEN, CLUB);
+        ArrayList<Card> c7C_7D_7H_7S_10D = new ArrayList<>();
+        c8C_8D_8H_8S_10C = toCardList(SEVEN, CLUB, SEVEN, DIAMOND, SEVEN, HEART, SEVEN, SPADE, TEN, DIAMOND);
+        ArrayList<Card> cAC_AD_AH_AS_3C = new ArrayList<>();
+        cAC_AD_AH_AS_3C = toCardList(ACE, CLUB, ACE, DIAMOND, ACE, HEART, ACE, SPADE, THREE, CLUB);
+        ArrayList<Card> c2C_2D_2H_2S_KC = new ArrayList<>();
+        c2C_2D_2H_2S_KC = toCardList(TWO, CLUB, TWO, DIAMOND, TWO, HEART, TWO, SPADE, KING, CLUB);
+        assertTrue(testJudge.carreDetector(c8C_8D_8H_8S_10C) > testJudge.carreDetector(c7C_7D_7H_7S_10D));
+        assertTrue(testJudge.carreDetector(cAC_AD_AH_AS_3C) > testJudge.carreDetector(c2C_2D_2H_2S_KC));
     }
 
     @Test
@@ -180,21 +197,6 @@ class JudgeTest {
 
     @Test
     void testqfD() {
-
-    }
-
-    @Test
-    void testBrelan() {
-        ArrayList<Card> c2H_2C_2D_AH_KD = new ArrayList<>();
-        c2H_2C_2D_AH_KD = toCardList(TWO, HEART, TWO, CLUB, TWO, DIAMOND, ACE, HEART, KING, DIAMOND);
-        ArrayList<Card> c3C_3H_3S_AD_KC = new ArrayList<>();
-        c3C_3H_3S_AD_KC = toCardList(THREE, CLUB, THREE, HEART, THREE, SPADE, ACE, DIAMOND, KING, CLUB);
-        ArrayList<Card> cKC_KD_KH_3C_8D = new ArrayList<>();
-        cKC_KD_KH_3C_8D = toCardList(KING, CLUB, KING, DIAMOND, KING, HEART, THREE, CLUB, EIGHT, DIAMOND);
-        ArrayList<Card> cJD_JC_JS_AC_2H = new ArrayList<>();
-        cJD_JC_JS_AC_2H = toCardList(JACK, DIAMOND, JACK, CLUB, JACK, SPADE, ACE, CLUB, TWO, HEART);
-        assertTrue(testJudge.brelanDetector(c2H_2C_2D_AH_KD) < testJudge.brelanDetector(c3C_3H_3S_AD_KC));
-        assertTrue(testJudge.brelanDetector(cKC_KD_KH_3C_8D) > testJudge.brelanDetector(cJD_JC_JS_AC_2H));
 
     }
 
